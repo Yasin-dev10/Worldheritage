@@ -2,9 +2,14 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'WorldHeritage — Taariikh iyo hidde dijitaal ah',
+  metadataBase: new URL(process.env.SITE_URL ?? 'http://localhost:3000'),
+  title: {
+    default: 'WorldHeritage — Stories that shaped our world',
+    template: '%s | WorldHeritage',
+  },
   description:
-    "Sahaminta taariikhda dunida, iyadoo caddaynta, tixraacyada iyo hubanti la'aanta si cad loo muujiyo.",
+    'Explore world history through published records, traceable sources, and clearly stated uncertainty.',
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {

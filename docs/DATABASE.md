@@ -1,6 +1,6 @@
 # Initial Database Model
 
-**Status:** conceptual relational model; the initial Prisma 6.19.3 schema and country-editorial migration implement only a first vertical slice, not the final schema.
+**Status:** Prisma 6.19.3 schema and migrations implement country reads plus sourced public events, people, civilizations, articles, timelines, and their explicit relationships. Initial generic revision snapshots, CMS review, and media metadata tables exist; full write/review/publish workflow is in progress. No historical content is seeded.
 
 ## 1. Shared conventions
 
@@ -12,21 +12,21 @@
 
 ## 2. Core entities and relationships
 
-| Entity | Purpose and principal fields | Relationships |
-|---|---|---|
-| **Country** | Current geographic/political reference: `id`, stable ISO code when applicable, slug, status | Many periods, events, people, places, civilizations through explicit joins; localized display text |
-| **HistoricalPeriod** | Named interval and historical framing; optional uncertain start/end `HistoricalDate` values | May associate with countries, events, people, places, civilizations |
-| **HistoricalEvent** | Event summary, date bounds, date precision, confidence/dispute metadata, publication state | Many countries, periods, people, places, civilizations, sources, translations |
-| **HistoricalPerson** | Person record with name variants and optional birth/death date values | Many events, places, civilizations, sources, translations |
-| **HistoricalPlace** | Historical/geographic place with optional coordinates and modern-location reference | Many countries, events, periods, civilizations, sources, translations |
-| **Civilization** | Civilization/cultural-historical grouping with scoped description | Many countries, periods, events, people, places, sources, translations |
-| **Source** | Bibliographic or archival reference: creator, title, publication/collection, date, publisher, URL/identifier, access date, rights/license, source type | Many claims/content revisions via `ContentSource` with claim note, locator, and evidentiary role |
-| **MediaAsset** | Metadata for an authorized image/audio/video/document; storage key, media type, checksum, dimensions, rights, attribution, alt text | Optional links to content revisions through an explicit attachment table; binary storage deferred |
-| **Translation** | Locale-specific fields for an entity or revision; translated-from revision, author, workflow state, reviewer | Belongs to a target entity/revision and locale; enforce unique target+locale+revision key |
-| **User** | Identity-provider subject, verified contact metadata as needed, account state | Many scoped role assignments, submissions, reviews, audit events |
-| **Role** | Controlled role key: `SUPER_ADMIN`, `COUNTRY_EDITOR`, `HISTORIAN_RESEARCHER`, `REVIEWER`, `TEACHER`, `USER` | Many users through `UserRole`; assignments can scope country/editorial area |
-| **Review** | Decision on an immutable submission/revision: reviewer, outcome, rationale, checklist, timestamp | Belongs to submission/revision; reviewer is a user |
-| **Submission** | Proposed create/update/correction with author, entity/revision, state, submitted timestamp | Has immutable revision snapshot, sources, reviews, and audit trail |
+| Entity               | Purpose and principal fields                                                                                                                           | Relationships                                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| **Country**          | Current geographic/political reference: `id`, stable ISO code when applicable, slug, status                                                            | Many periods, events, people, places, civilizations through explicit joins; localized display text |
+| **HistoricalPeriod** | Named interval and historical framing; optional uncertain start/end `HistoricalDate` values                                                            | May associate with countries, events, people, places, civilizations                                |
+| **HistoricalEvent**  | Event summary, date bounds, date precision, confidence/dispute metadata, publication state                                                             | Many countries, periods, people, places, civilizations, sources, translations                      |
+| **HistoricalPerson** | Person record with name variants and optional birth/death date values                                                                                  | Many events, places, civilizations, sources, translations                                          |
+| **HistoricalPlace**  | Historical/geographic place with optional coordinates and modern-location reference                                                                    | Many countries, events, periods, civilizations, sources, translations                              |
+| **Civilization**     | Civilization/cultural-historical grouping with scoped description                                                                                      | Many countries, periods, events, people, places, sources, translations                             |
+| **Source**           | Bibliographic or archival reference: creator, title, publication/collection, date, publisher, URL/identifier, access date, rights/license, source type | Many claims/content revisions via `ContentSource` with claim note, locator, and evidentiary role   |
+| **MediaAsset**       | Metadata for an authorized image/audio/video/document; storage key, media type, checksum, dimensions, rights, attribution, alt text                    | Optional links to content revisions through an explicit attachment table; binary storage deferred  |
+| **Translation**      | Locale-specific fields for an entity or revision; translated-from revision, author, workflow state, reviewer                                           | Belongs to a target entity/revision and locale; enforce unique target+locale+revision key          |
+| **User**             | Identity-provider subject, verified contact metadata as needed, account state                                                                          | Many scoped role assignments, submissions, reviews, audit events                                   |
+| **Role**             | Controlled role key: `SUPER_ADMIN`, `COUNTRY_EDITOR`, `HISTORIAN_RESEARCHER`, `REVIEWER`, `TEACHER`, `USER`                                            | Many users through `UserRole`; assignments can scope country/editorial area                        |
+| **Review**           | Decision on an immutable submission/revision: reviewer, outcome, rationale, checklist, timestamp                                                       | Belongs to submission/revision; reviewer is a user                                                 |
+| **Submission**       | Proposed create/update/correction with author, entity/revision, state, submitted timestamp                                                             | Has immutable revision snapshot, sources, reviews, and audit trail                                 |
 
 ## 3. Supporting tables
 
@@ -69,4 +69,4 @@ Calendar/date encoding, geographic boundary history, additional entity tables, r
 
 The initial Prisma schema at `backend/prisma/schema.prisma` and migration at `backend/prisma/migrations/20261013000000_country_editorial_foundation/migration.sql` implement country identity, country revisions, Somali/English revision translations, linked sources with claim standing and rights metadata, editorial review records, and audit events. The NestJS API uses this slice for published-country listing, search, and detail reads. The migration has been applied to the local PostgreSQL database and `npm run db:status --workspace backend` reported it up to date during verification.
 
-The schema does not yet implement login, database-backed role assignments, historical event/person/place/civilization tables, a submission entity/workflow, or persisted audit-event writes. The conceptual entities above remain the target model, not a claim that every table exists. Use `npm run db:generate --workspace backend` to generate the client, `npm run db:migrate --workspace backend` for local development, and `npm run db:deploy --workspace backend` for reviewed migrations in deployment. Once a migration has been applied anywhere shared, add a new migration instead of editing it. Custom SQL constraints in migrations remain authoritative where Prisma schema cannot express the complete rule. The backend build copies the generated client into `backend/dist/generated/prisma` for production runtime.
+Later Phase 4 migrations add event, person, civilization, article, and timeline tables and relationships. Phase 5 adds immutable generic content snapshots, CMS review records, and media metadata. OIDC authenticates API requests and role claims come from the identity provider; database-backed user/role assignments, full editorial transitions, and comprehensive audit writes are not yet implemented. Use `npm run db:generate --workspace backend` to generate the client, `npm run db:migrate --workspace backend` for local development, and `npm run db:deploy --workspace backend` for reviewed migrations in deployment. Once a migration has been applied anywhere shared, add a new migration instead of editing it. Custom SQL constraints in migrations remain authoritative where Prisma schema cannot express the complete rule.

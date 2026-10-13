@@ -18,6 +18,12 @@ if (envFile) loadEnvFile(envFile);
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api/v1');
+  const webOrigin = process.env.WEB_ORIGIN ?? 'http://localhost:3000';
+  app.enableCors({
+    origin: webOrigin,
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  });
 
   const port = Number(process.env.API_PORT ?? 4001);
   if (!Number.isInteger(port) || port < 1 || port > 65535) {

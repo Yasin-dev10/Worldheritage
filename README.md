@@ -4,13 +4,13 @@ WorldHeritage is a founder-owned multilingual history and digital heritage platf
 
 ## Current status
 
-The Phase 1 product and governance foundation is documented. The repository also contains the Phase 2 technical foundation and an initial public country discovery slice: country listing, title/summary search, and country detail pages with source metadata. This is an early development implementation, not a production release. Authentication, server-side roles, contributor submissions, review/publishing tools, and populated historical content remain future work.
+The public web platform includes the discovery routes and API reads for countries, events, people, civilizations, articles, timelines, and global search. The initial Phase 5 increment adds OIDC-protected admin dashboard access and source/media metadata endpoints; full content editing and editorial workflow remain in progress. See [Phase 5 CMS status](docs/PHASE5.md) for setup and remaining work. No historical records are seeded, so public directories are empty until reviewed content is published.
 
 ## Repository layout
 
 ```text
-web/                   Next.js, TypeScript, Tailwind CSS (country discovery slice)
-backend/               NestJS REST API, Prisma schema and migrations
+web/                   Next.js, TypeScript, Tailwind CSS (public discovery platform)
+backend/               NestJS REST API, Prisma schema and migrations (public read endpoints)
 app/                   Flutter starter (later phase)
 docs/                  Product, architecture, data, API, policy, and roadmap
 compose.yaml           Local PostgreSQL service

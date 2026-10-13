@@ -6,7 +6,7 @@ import {
   Param,
   Query,
 } from '@nestjs/common';
-import prismaClientModule from '../generated/prisma/index.js';
+import prismaClientModule from '@prisma/client';
 import { PrismaService } from './prisma.service.js';
 
 const { EditorialState } = prismaClientModule;
@@ -22,6 +22,8 @@ export class CountriesController {
     @Query('q') query: string | undefined,
     @Query('locale') locale = 'so',
     @Query('limit') limitValue = '20',
+    @Query('cursor') cursor?: string,
+    @Query('region') region?: string,
   ) {
     this.validateLocale(locale);
     const term = query?.trim();
@@ -36,9 +38,13 @@ export class CountriesController {
         `limit must be an integer between 1 and ${MAX_PAGE_SIZE}.`,
       );
     }
+    this.validateCursor(cursor);
 
     const matches = await this.prisma.country.findMany({
       where: {
+        ...(region
+          ? { region: { equals: region, mode: 'insensitive' as const } }
+          : {}),
         revisions: {
           some: {
             state: EditorialState.PUBLISHED,
@@ -55,11 +61,13 @@ export class CountriesController {
         },
       },
       orderBy: { slug: 'asc' },
-      take: limit,
+      take: limit + 1,
+      ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
       select: {
         id: true,
         slug: true,
         isoAlpha2: true,
+        region: true,
         revisions: {
           where: {
             state: EditorialState.PUBLISHED,
@@ -86,8 +94,9 @@ export class CountriesController {
       },
     });
 
+    const hasMore = matches.length > limit;
     return {
-      data: matches.flatMap((country) => {
+      data: matches.slice(0, limit).flatMap((country) => {
         const revision = country.revisions[0];
         const translation = revision?.translations[0];
         if (!revision || !translation) return [];
@@ -96,6 +105,7 @@ export class CountriesController {
             id: country.id,
             slug: country.slug,
             isoAlpha2: country.isoAlpha2,
+            region: country.region,
             revisionId: revision.id,
             publishedAt: revision.publishedAt,
             locale: translation.locale,
@@ -104,6 +114,7 @@ export class CountriesController {
           },
         ];
       }),
+      nextCursor: hasMore ? (matches[limit - 1]?.id ?? null) : null,
       locale,
     };
   }
@@ -113,6 +124,7 @@ export class CountriesController {
     @Query('locale') locale = 'so',
     @Query('limit') limitValue = '20',
     @Query('cursor') cursor?: string,
+    @Query('region') region?: string,
   ) {
     this.validateLocale(locale);
     const limit = Number(limitValue);
@@ -121,17 +133,14 @@ export class CountriesController {
         `limit must be an integer between 1 and ${MAX_PAGE_SIZE}.`,
       );
     }
-    if (
-      cursor &&
-      !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
-        cursor,
-      )
-    ) {
+    if (cursor && !this.isUuid(cursor))
       throw new BadRequestException('cursor must be a country UUID.');
-    }
 
     const countries = await this.prisma.country.findMany({
       where: {
+        ...(region
+          ? { region: { equals: region, mode: 'insensitive' as const } }
+          : {}),
         revisions: {
           some: {
             state: EditorialState.PUBLISHED,
@@ -146,6 +155,7 @@ export class CountriesController {
         id: true,
         slug: true,
         isoAlpha2: true,
+        region: true,
         revisions: {
           where: {
             state: EditorialState.PUBLISHED,
@@ -177,6 +187,7 @@ export class CountriesController {
           id: country.id,
           slug: country.slug,
           isoAlpha2: country.isoAlpha2,
+          region: country.region,
           revisionId: revision.id,
           publishedAt: revision.publishedAt,
           locale: translation.locale,
@@ -216,6 +227,7 @@ export class CountriesController {
         id: true,
         slug: true,
         isoAlpha2: true,
+        region: true,
         revisions: {
           where: {
             state: EditorialState.PUBLISHED,
@@ -265,6 +277,7 @@ export class CountriesController {
       id: country.id,
       slug: country.slug,
       isoAlpha2: country.isoAlpha2,
+      region: country.region,
       revisionId: revision.id,
       publishedAt: revision.publishedAt,
       locale: translation.locale,
@@ -279,5 +292,17 @@ export class CountriesController {
     if (locale !== 'so' && locale !== 'en') {
       throw new BadRequestException('locale must be so or en.');
     }
+  }
+
+  private validateCursor(cursor?: string) {
+    if (cursor && !this.isUuid(cursor)) {
+      throw new BadRequestException('cursor must be a country UUID.');
+    }
+  }
+
+  private isUuid(value: string) {
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+      value,
+    );
   }
 }

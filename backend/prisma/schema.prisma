@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -41,14 +40,37 @@ enum ClaimStanding {
   @@map("claim_standing")
 }
 
-model Country {
-  id        String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  slug      String            @unique
-  isoAlpha2 String?           @unique(map: "countries_iso_code_unique") @map("iso_3166_1_alpha2") @db.Char(2)
-  createdAt DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
-  updatedAt DateTime          @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
-  revisions CountryRevision[]
+enum HistoricalDatePrecision {
+  EXACT_DAY
+  MONTH
+  YEAR
+  DECADE
+  CENTURY
+  RANGE
+  CIRCA
+  UNKNOWN
+}
 
+enum HistoricalDateCertainty {
+  CERTAIN
+  PROBABLE
+  POSSIBLE
+  DISPUTED
+  UNKNOWN
+}
+
+model Country {
+  id                String                @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug              String                @unique
+  isoAlpha2         String?               @unique(map: "countries_iso_code_unique") @map("iso_3166_1_alpha2") @db.Char(2)
+  region            String?
+  createdAt         DateTime              @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime              @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  revisions         CountryRevision[]
+  eventLinks        EventCountry[]
+  civilizationLinks CivilizationCountry[]
+
+  @@index([region, slug])
   @@map("countries")
 }
 
@@ -101,6 +123,10 @@ model Source {
   createdAt             DateTime                @default(now()) @map("created_at") @db.Timestamptz(6)
   updatedAt             DateTime                @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
   countryRevisions      CountryRevisionSource[]
+  eventLinks            EventSource[]
+  personLinks           PersonSource[]
+  civilizationLinks     CivilizationSource[]
+  articleLinks          ArticleSource[]
 
   @@index([stableIdentifier], map: "sources_stable_identifier_idx")
   @@map("sources")
@@ -146,4 +172,333 @@ model AuditEvent {
 
   @@index([targetType, targetId, createdAt], map: "audit_events_target_idx")
   @@map("audit_events")
+}
+
+model ContentRevision {
+  id             String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  contentType    String         @map("content_type")
+  contentId      String         @map("content_id") @db.Uuid
+  revisionNumber Int            @map("revision_number")
+  state          EditorialState
+  editorSubject  String         @map("editor_subject")
+  snapshot       Json           @db.JsonB
+  createdAt      DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+  reviews        CmsReview[]
+
+  @@unique([contentType, contentId, revisionNumber])
+  @@index([contentType, contentId, createdAt])
+  @@index([state, createdAt])
+  @@map("content_revisions")
+}
+
+model CmsReview {
+  id              String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  revisionId      String          @map("revision_id") @db.Uuid
+  reviewerSubject String          @map("reviewer_subject")
+  outcome         String
+  rationale       String
+  createdAt       DateTime        @default(now()) @map("created_at") @db.Timestamptz(6)
+  revision        ContentRevision @relation(fields: [revisionId], references: [id], onDelete: Restrict)
+
+  @@index([revisionId, createdAt])
+  @@map("cms_reviews")
+}
+
+model MediaAsset {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  storageLocation String   @map("storage_location")
+  mediaType       String   @map("media_type")
+  altText         String?  @map("alt_text")
+  attribution     String?
+  provenance      String?
+  license         String?
+  rightsNotes     String?  @map("rights_notes")
+  createdBy       String   @map("created_by")
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@index([createdAt])
+  @@map("media_assets")
+}
+
+model HistoricalEvent {
+  id            String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug          String                  @unique
+  category      String
+  calendar      String?
+  dateDisplay   String?
+  startYear     Int?                    @map("start_year")
+  endYear       Int?                    @map("end_year")
+  datePrecision HistoricalDatePrecision @default(UNKNOWN) @map("date_precision")
+  dateCertainty HistoricalDateCertainty @default(UNKNOWN) @map("date_certainty")
+  state         EditorialState          @default(DRAFT)
+  publishedAt   DateTime?               @map("published_at") @db.Timestamptz(6)
+  createdAt     DateTime                @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime                @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  translations  EventTranslation[]
+  countries     EventCountry[]
+  people        EventPerson[]
+  sources       EventSource[]
+  timelineLinks TimelineEvent[]
+  civilizations CivilizationEvent[]
+
+  @@index([state, startYear, slug])
+  @@index([category, state, startYear])
+  @@map("historical_events")
+}
+
+model EventTranslation {
+  id      String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  eventId String          @map("event_id") @db.Uuid
+  locale  String
+  title   String
+  summary String
+  body    String
+  event   HistoricalEvent @relation(fields: [eventId], references: [id], onDelete: Restrict)
+
+  @@unique([eventId, locale])
+  @@map("event_translations")
+}
+
+model EventCountry {
+  eventId   String          @map("event_id") @db.Uuid
+  countryId String          @map("country_id") @db.Uuid
+  relation  String          @default("RELATED")
+  event     HistoricalEvent @relation(fields: [eventId], references: [id], onDelete: Restrict)
+  country   Country         @relation(fields: [countryId], references: [id], onDelete: Restrict)
+
+  @@id([eventId, countryId])
+  @@map("event_countries")
+}
+
+model EventPerson {
+  eventId  String           @map("event_id") @db.Uuid
+  personId String           @map("person_id") @db.Uuid
+  relation String           @default("RELATED")
+  event    HistoricalEvent  @relation(fields: [eventId], references: [id], onDelete: Restrict)
+  person   HistoricalPerson @relation(fields: [personId], references: [id], onDelete: Restrict)
+
+  @@id([eventId, personId])
+  @@map("event_people")
+}
+
+model EventSource {
+  id            String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  eventId       String          @map("event_id") @db.Uuid
+  sourceId      String          @map("source_id") @db.Uuid
+  locator       String?
+  claimNote     String          @map("claim_note")
+  claimStanding ClaimStanding   @map("claim_standing")
+  event         HistoricalEvent @relation(fields: [eventId], references: [id], onDelete: Restrict)
+  source        Source          @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+
+  @@index([eventId])
+  @@map("event_sources")
+}
+
+model HistoricalPerson {
+  id            String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug          String               @unique
+  birthDateText String?              @map("birth_date_text")
+  birthYear     Int?                 @map("birth_year")
+  deathDateText String?              @map("death_date_text")
+  deathYear     Int?                 @map("death_year")
+  state         EditorialState       @default(DRAFT)
+  publishedAt   DateTime?            @map("published_at") @db.Timestamptz(6)
+  createdAt     DateTime             @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime             @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  translations  PersonTranslation[]
+  events        EventPerson[]
+  sources       PersonSource[]
+  civilizations CivilizationPerson[]
+
+  @@index([state, slug])
+  @@map("historical_people")
+}
+
+model PersonTranslation {
+  id       String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  personId String           @map("person_id") @db.Uuid
+  locale   String
+  title    String
+  summary  String
+  body     String
+  person   HistoricalPerson @relation(fields: [personId], references: [id], onDelete: Restrict)
+
+  @@unique([personId, locale])
+  @@map("person_translations")
+}
+
+model PersonSource {
+  id            String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  personId      String           @map("person_id") @db.Uuid
+  sourceId      String           @map("source_id") @db.Uuid
+  locator       String?
+  claimNote     String           @map("claim_note")
+  claimStanding ClaimStanding    @map("claim_standing")
+  person        HistoricalPerson @relation(fields: [personId], references: [id], onDelete: Restrict)
+  source        Source           @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+
+  @@index([personId])
+  @@map("person_sources")
+}
+
+model Civilization {
+  id            String                    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug          String                    @unique
+  region        String?
+  calendar      String?
+  dateDisplay   String?                   @map("date_display")
+  startYear     Int?                      @map("start_year")
+  endYear       Int?                      @map("end_year")
+  datePrecision HistoricalDatePrecision   @default(UNKNOWN) @map("date_precision")
+  state         EditorialState            @default(DRAFT)
+  publishedAt   DateTime?                 @map("published_at") @db.Timestamptz(6)
+  createdAt     DateTime                  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime                  @default(now()) @updatedAt @db.Timestamptz(6)
+  translations  CivilizationTranslation[]
+  countries     CivilizationCountry[]
+  people        CivilizationPerson[]
+  events        CivilizationEvent[]
+  sources       CivilizationSource[]
+
+  @@index([state, region, slug])
+  @@map("civilizations")
+}
+
+model CivilizationTranslation {
+  id             String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  civilizationId String       @map("civilization_id") @db.Uuid
+  locale         String
+  title          String
+  summary        String
+  body           String
+  civilization   Civilization @relation(fields: [civilizationId], references: [id], onDelete: Restrict)
+
+  @@unique([civilizationId, locale])
+  @@map("civilization_translations")
+}
+
+model CivilizationCountry {
+  civilizationId String       @map("civilization_id") @db.Uuid
+  countryId      String       @map("country_id") @db.Uuid
+  civilization   Civilization @relation(fields: [civilizationId], references: [id], onDelete: Restrict)
+  country        Country      @relation(fields: [countryId], references: [id], onDelete: Restrict)
+
+  @@id([civilizationId, countryId])
+  @@map("civilization_countries")
+}
+
+model CivilizationPerson {
+  civilizationId String           @map("civilization_id") @db.Uuid
+  personId       String           @map("person_id") @db.Uuid
+  relation       String           @default("RELATED")
+  civilization   Civilization     @relation(fields: [civilizationId], references: [id], onDelete: Restrict)
+  person         HistoricalPerson @relation(fields: [personId], references: [id], onDelete: Restrict)
+
+  @@id([civilizationId, personId])
+  @@map("civilization_people")
+}
+
+model CivilizationEvent {
+  civilizationId String          @map("civilization_id") @db.Uuid
+  eventId        String          @map("event_id") @db.Uuid
+  relation       String          @default("RELATED")
+  civilization   Civilization    @relation(fields: [civilizationId], references: [id], onDelete: Restrict)
+  event          HistoricalEvent @relation(fields: [eventId], references: [id], onDelete: Restrict)
+
+  @@id([civilizationId, eventId])
+  @@map("civilization_events")
+}
+
+model CivilizationSource {
+  id             String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  civilizationId String        @map("civilization_id") @db.Uuid
+  sourceId       String        @map("source_id") @db.Uuid
+  locator        String?
+  claimNote      String        @map("claim_note")
+  claimStanding  ClaimStanding @map("claim_standing")
+  civilization   Civilization  @relation(fields: [civilizationId], references: [id], onDelete: Restrict)
+  source         Source        @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+
+  @@index([civilizationId])
+  @@map("civilization_sources")
+}
+
+model HistoryArticle {
+  id           String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug         String               @unique
+  authorName   String               @map("author_name")
+  editorName   String?              @map("editor_name")
+  publishedAt  DateTime?            @map("published_at") @db.Timestamptz(6)
+  updatedAt    DateTime             @default(now()) @map("updated_at") @db.Timestamptz(6)
+  state        EditorialState       @default(DRAFT)
+  translations ArticleTranslation[]
+  sources      ArticleSource[]
+
+  @@index([state, publishedAt, slug])
+  @@map("history_articles")
+}
+
+model ArticleTranslation {
+  id        String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  articleId String         @map("article_id") @db.Uuid
+  locale    String
+  title     String
+  summary   String
+  body      String
+  article   HistoryArticle @relation(fields: [articleId], references: [id], onDelete: Restrict)
+
+  @@unique([articleId, locale])
+  @@map("article_translations")
+}
+
+model ArticleSource {
+  id            String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  articleId     String         @map("article_id") @db.Uuid
+  sourceId      String         @map("source_id") @db.Uuid
+  locator       String?
+  claimNote     String         @map("claim_note")
+  claimStanding ClaimStanding  @map("claim_standing")
+  article       HistoryArticle @relation(fields: [articleId], references: [id], onDelete: Restrict)
+  source        Source         @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+
+  @@index([articleId])
+  @@map("article_sources")
+}
+
+model HistoricalTimeline {
+  id           String                @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug         String                @unique
+  state        EditorialState        @default(DRAFT)
+  publishedAt  DateTime?             @map("published_at") @db.Timestamptz(6)
+  translations TimelineTranslation[]
+  events       TimelineEvent[]
+
+  @@index([state, slug])
+  @@map("historical_timelines")
+}
+
+model TimelineTranslation {
+  id         String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  timelineId String             @map("timeline_id") @db.Uuid
+  locale     String
+  title      String
+  summary    String
+  timeline   HistoricalTimeline @relation(fields: [timelineId], references: [id], onDelete: Restrict)
+
+  @@unique([timelineId, locale])
+  @@map("timeline_translations")
+}
+
+model TimelineEvent {
+  timelineId String             @map("timeline_id") @db.Uuid
+  eventId    String             @map("event_id") @db.Uuid
+  position   Int
+  timeline   HistoricalTimeline @relation(fields: [timelineId], references: [id], onDelete: Restrict)
+  event      HistoricalEvent    @relation(fields: [eventId], references: [id], onDelete: Restrict)
+
+  @@id([timelineId, eventId])
+  @@unique([timelineId, position])
+  @@map("timeline_events")
 }
