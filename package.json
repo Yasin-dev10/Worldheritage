@@ -1,0 +1,30 @@
+{
+  "name": "worldheritage",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "web",
+    "backend"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace web",
+    "dev:api": "npm run start:dev --workspace backend",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspace backend",
+    "build": "npm run build --workspaces --if-present",
+    "format:check": "prettier --check \"{web,backend}/**/*.{ts,tsx,js,json,css}\""
+  },
+  "devDependencies": {
+    "oxlint": "^1.58.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "prettier": "^3.6.2"
+  },
+  "engines": {
+    "node": ">=20.19.0",
+    "npm": ">=10.0.0"
+  },
+  "overrides": {
+    "deepmerge-ts": "8.0.2"
+  }
+}
