@@ -269,7 +269,7 @@ export class SearchController {
       for (const row of rows) {
         const translation = row.translations[0];
         if (translation)
-          results.push({ id: row.id, slug: row.slug, type, ...translation });
+          results.push({ slug: row.slug, type, ...translation, id: row.id });
       }
     };
     add(

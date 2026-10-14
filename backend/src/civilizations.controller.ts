@@ -81,7 +81,7 @@ export class CivilizationsController {
       data: rows
         .slice(0, limit)
         .flatMap(({ translations, ...row }) =>
-          translations[0] ? [{ ...row, ...translations[0] }] : [],
+          translations[0] ? [{ ...row, ...translations[0], id: row.id }] : [],
         ),
       nextCursor: hasMore ? (rows[limit - 1]?.id ?? null) : null,
       locale,
@@ -201,6 +201,7 @@ export class CivilizationsController {
     return {
       ...base,
       ...translations[0],
+      id: base.id,
       countries: countries.map(({ country }) => ({
         id: country.id,
         slug: country.slug,

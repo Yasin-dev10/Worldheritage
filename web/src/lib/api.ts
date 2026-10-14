@@ -31,6 +31,9 @@ export type CountryDetail = Country & {
       rightsNotes: string | null;
     };
   }>;
+  events?: Array<Record<string, unknown>>;
+  people?: Array<Record<string, unknown>>;
+  civilizations?: Array<Record<string, unknown>>;
 };
 
 export type CollectionResponse<T> = { data: T[]; nextCursor?: string | null; locale?: Locale };
@@ -61,6 +64,8 @@ export type PublicContent = {
   events?: Array<Record<string, unknown>>;
   people?: Array<Record<string, unknown>>;
   countries?: Array<Record<string, unknown>>;
+  civilizations?: Array<Record<string, unknown>>;
+  periods?: Array<Record<string, unknown>>;
 };
 
 export type ApiResult<T> = {
@@ -104,6 +109,12 @@ export const collections = {
     title: { so: 'Qoraallada taariikhda', en: 'History & articles' },
     endpoint: 'articles',
     route: 'history',
+    implemented: true,
+  },
+  periods: {
+    title: { so: 'Xilliyada taariikhda', en: 'Historical periods' },
+    endpoint: 'periods',
+    route: 'periods',
     implemented: true,
   },
 } as const;

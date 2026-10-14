@@ -139,6 +139,7 @@ export class EventsController {
                 revisions: {
                   where: {
                     state: EditorialState.PUBLISHED,
+                    sources: { some: {} },
                     translations: { some: { locale } },
                   },
                   orderBy: { publishedAt: 'desc' },
@@ -156,6 +157,13 @@ export class EventsController {
           },
         },
         people: {
+          where: {
+            person: {
+              state: EditorialState.PUBLISHED,
+              sources: { some: {} },
+              translations: { some: { locale } },
+            },
+          },
           select: {
             relation: true,
             person: {
@@ -171,11 +179,54 @@ export class EventsController {
             },
           },
         },
+        civilizations: {
+          where: {
+            civilization: {
+              state: EditorialState.PUBLISHED,
+              sources: { some: {} },
+              translations: { some: { locale } },
+            },
+          },
+          select: {
+            relation: true,
+            civilization: {
+              select: {
+                slug: true,
+                translations: {
+                  where: { locale },
+                  take: 1,
+                  select: { title: true },
+                },
+              },
+            },
+          },
+        },
+        periods: {
+          where: {
+            period: {
+              state: EditorialState.PUBLISHED,
+              sources: { some: {} },
+              translations: { some: { locale } },
+            },
+          },
+          select: {
+            period: {
+              select: {
+                slug: true,
+                dateDisplay: true,
+                translations: {
+                  where: { locale },
+                  take: 1,
+                  select: { title: true },
+                },
+              },
+            },
+          },
+        },
       },
     });
     if (!event || !event.translations[0]) throw new NotFoundException();
     return {
-      id: event.id,
       slug: event.slug,
       category: event.category,
       calendar: event.calendar,
@@ -186,6 +237,7 @@ export class EventsController {
       dateCertainty: event.dateCertainty,
       publishedAt: event.publishedAt,
       ...event.translations[0],
+      id: event.id,
       sources: event.sources,
       countries: event.countries.map(({ relation, country }) => ({
         id: country.id,
@@ -200,6 +252,16 @@ export class EventsController {
         title: person.translations[0]?.title ?? null,
         relation,
       })),
+      civilizations: event.civilizations.map(({ relation, civilization }) => ({
+        slug: civilization.slug,
+        title: civilization.translations[0]?.title ?? civilization.slug,
+        relation,
+      })),
+      periods: event.periods.map(({ period }) => ({
+        slug: period.slug,
+        title: period.translations[0]?.title ?? period.slug,
+        dateDisplay: period.dateDisplay,
+      })),
     };
   }
 
@@ -212,7 +274,7 @@ export class EventsController {
     const hasMore = rows.length > limit;
     const data = rows.slice(0, limit).flatMap((row) => {
       const localized = translation(row);
-      return localized ? [{ ...row, ...localized }] : [];
+      return localized ? [{ ...row, ...localized, id: row.id }] : [];
     });
     return {
       data,

@@ -78,7 +78,7 @@ export class TimelinesController {
       data: rows
         .slice(0, limit)
         .flatMap(({ translations, ...row }) =>
-          translations[0] ? [{ ...row, ...translations[0] }] : [],
+          translations[0] ? [{ ...row, ...translations[0], id: row.id }] : [],
         ),
       nextCursor: hasMore ? (rows[limit - 1]?.id ?? null) : null,
       locale,
@@ -152,6 +152,7 @@ export class TimelinesController {
     return {
       ...base,
       ...translations[0],
+      id: base.id,
       events: events.map(({ position, event }) => ({
         position,
         id: event.id,

@@ -1,0 +1,698 @@
+{
+  "dataset_name": "WorldHeritage Somali Historical Knowledge Base — Starter Batch 1",
+  "version": "0.1.0",
+  "created_date": "2026-10-14",
+  "language": "so",
+  "purpose": "Starter research dataset for editorial review and schema mapping; not a complete history of Somalia.",
+  "import_policy": {
+    "default_status": "draft",
+    "publish_automatically": false,
+    "preserve_existing_records": true,
+    "requires_schema_mapping": true,
+    "note": "Portable interchange format; inspect the existing WorldHeritage schema before import."
+  },
+  "records": [
+    {
+      "id": "som-001",
+      "type": "historical_topic",
+      "title_so": "Raadadka qadiimiga ah iyo degsiimooyinkii hore",
+      "title_en": "Archaeological evidence and early settlements",
+      "slug": "raadadka-qadiimiga-ah-iyo-degsiimooyinkii-hore",
+      "summary_so": "Taariikhda fog ee dhulka Soomaaliyeed waxaa lagu daraaseeyaa raadadka qadiimiga ah, qoraallada iyo caddaynta deegaanka.",
+      "body_so": "Taariikhda fog ee dhulka Soomaaliyeed waxaa lagu daraaseeyaa raadadka qadiimiga ah, qoraallada iyo caddaynta deegaanka. Goob kasta iyo taariikhdeeda waa in si gaar ah loo xaqiijiyaa.",
+      "period": "Pre-modern history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Somali regions",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc"
+      ],
+      "notes": "Ha ku darin taariikho ama goob gaar ah oo aan il toos ah lagu xaqiijin."
+    },
+    {
+      "id": "som-002",
+      "type": "historical_topic",
+      "title_so": "Ganacsiga xeebaha Soomaaliyeed iyo Badweynta Hindiya",
+      "title_en": "Somali coastal trade and the Indian Ocean",
+      "slug": "ganacsiga-xeebaha-soomaaliyeed-iyo-badweynta-hindiya",
+      "summary_so": "Xeebaha Soomaaliyeed waxay ku jireen shabakado ganacsi oo ku teedsanaa Badda Cas iyo Badweynta Hindiya.",
+      "body_so": "Xeebaha Soomaaliyeed waxay ku jireen shabakado ganacsi oo ku teedsanaa Badda Cas iyo Badweynta Hindiya. Faahfaahinta badeecadaha, dekedaha iyo xilliyada waxay u baahan yihiin ilo gaar ah.",
+      "period": "Pre-modern history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Somali coast",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "U baahan tixraacyo gaar ah oo ku saabsan dekedaha iyo xilliyada."
+    },
+    {
+      "id": "som-003",
+      "type": "historical_topic",
+      "title_so": "Faafitaanka Islaamka ee dhulka Soomaaliyeed",
+      "title_en": "Spread of Islam in Somali regions",
+      "slug": "faafitaanka-islaamka-ee-dhulka-soomaaliyeed",
+      "summary_so": "Islaamku wuxuu muddo dheer door ku lahaa ganacsiga, waxbarashada, dhaqanka iyo xiriirrada bulshooyinka Soomaaliyeed.",
+      "body_so": "Islaamku wuxuu muddo dheer door ku lahaa ganacsiga, waxbarashada, dhaqanka iyo xiriirrada bulshooyinka Soomaaliyeed. Waqtiga iyo qaabka faafitaanku way ku kala duwanaan karaan deegaannada.",
+      "period": "Medieval history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Somali regions",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "Ka fogow hal taariikh oo lagu soo koobo dhammaan gobollada."
+    },
+    {
+      "id": "som-004",
+      "type": "historical_topic",
+      "title_so": "Muqdisho iyo taariikhdeeda ganacsi",
+      "title_en": "Mogadishu and its commercial history",
+      "slug": "muqdisho-iyo-taariikhdeeda-ganacsi",
+      "summary_so": "Muqdisho waxay door ku lahayd ganacsiga, diinta iyo nolosha magaalooyinka xeebaha Soomaaliyeed.",
+      "body_so": "Muqdisho waxay door ku lahayd ganacsiga, diinta iyo nolosha magaalooyinka xeebaha Soomaaliyeed. Maqaal buuxa waa inuu adeegsadaa qoraallo taariikheed iyo cilmi-baaris gaar ah.",
+      "period": "Medieval to modern history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Mogadishu",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "Taariikhaha bilowga magaalada waa in il gaar ah lagu xaqiijiyaa."
+    },
+    {
+      "id": "som-005",
+      "type": "historical_topic",
+      "title_so": "Saldanaddii Ajuuraan",
+      "title_en": "Ajuran Sultanate",
+      "slug": "saldanaddii-ajuuraan",
+      "summary_so": "Tixraac aqooneed wuxuu Ajuuraan ku tilmaamaa maamul Islaami ah oo ka jiray koonfurta iyo bartamaha Soomaaliya xilligii dhexe.",
+      "body_so": "Tixraac aqooneed wuxuu Ajuuraan ku tilmaamaa maamul Islaami ah oo ka jiray koonfurta iyo bartamaha Soomaaliya xilligii dhexe. Xuduudaha, taariikhaha iyo xiriirrada siyaasadeed waxay u baahan yihiin xaqiijin dheeraad ah.",
+      "period": "Medieval history",
+      "start_date": "1250",
+      "end_date": null,
+      "date_precision": "approximate_start",
+      "region": "South-central Somalia",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_ajuran",
+        "src_lewis"
+      ],
+      "notes": "Qarniga 13aad waa qiyaas; ha u beddelin taariikh sax ah."
+    },
+    {
+      "id": "som-006",
+      "type": "historical_topic",
+      "title_so": "Saldanaddii Cadal (Adal)",
+      "title_en": "Adal Sultanate",
+      "slug": "saldanaddii-cadal-adal",
+      "summary_so": "Cadal waxay ahayd awood siyaasadeed oo muhiim ka ahayd Geeska Afrika xilligii dhexe iyo bilowgii casriga hore.",
+      "body_so": "Cadal waxay ahayd awood siyaasadeed oo muhiim ka ahayd Geeska Afrika xilligii dhexe iyo bilowgii casriga hore. Maqaalka waa in lagu saleeyaa daraasado si gaar ah uga hadla gobolka.",
+      "period": "Medieval and early modern history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Horn of Africa",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "U baahan il gaar ah oo Cadal diiradda saarta."
+    },
+    {
+      "id": "som-007",
+      "type": "historical_topic",
+      "title_so": "Saldanaddii Geledi",
+      "title_en": "Geledi Sultanate",
+      "slug": "saldanaddii-geledi",
+      "summary_so": "Geledi waxay ka mid ahayd nidaamyadii siyaasadeed ee taariikhda koonfurta Soomaaliya.",
+      "body_so": "Geledi waxay ka mid ahayd nidaamyadii siyaasadeed ee taariikhda koonfurta Soomaaliya. Hoggaamiyeyaasha, taariikhaha iyo xiriirrada deriska waa in cilmi-baaris gaar ah lagu xaqiijiyaa.",
+      "period": "Early modern history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Southern Somalia",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "Hordhac cilmi-baaris; ma aha maqaal diyaar u ah daabacaad."
+    },
+    {
+      "id": "som-008",
+      "type": "historical_topic",
+      "title_so": "Saldanadihii Majeerteen iyo Hobyo",
+      "title_en": "Majeerteen and Hobyo Sultanates",
+      "slug": "saldanadihii-majeerteen-iyo-hobyo",
+      "summary_so": "Saldanadahan waxay door ku lahaayeen siyaasadda qaybo ka mid ah Soomaaliya ka hor iyo xilligii gumeysiga.",
+      "body_so": "Saldanadahan waxay door ku lahaayeen siyaasadda qaybo ka mid ah Soomaaliya ka hor iyo xilligii gumeysiga. Xiriirrada ganacsi iyo siyaasadeed waa in lagu faahfaahiyaa ilo gaar ah.",
+      "period": "Early modern history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Northeastern and central Somalia",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "Kala saar labada saldanadood marka la ballaarinayo."
+    },
+    {
+      "id": "som-009",
+      "type": "historical_topic",
+      "title_so": "Kala-qaybsigii gumeysiga ee dhulka Soomaaliyeed",
+      "title_en": "Colonial partition of Somali territories",
+      "slug": "kala-qaybsigii-gumeysiga-ee-dhulka-soomaaliyeed",
+      "summary_so": "Dhulal ay Soomaalidu degto waxay hoos galeen maamulo gumeysi oo kala duwan, halka deegaanno kale ay ku jireen xuduudaha Itoobiya iyo Kenya.",
+      "body_so": "Dhulal ay Soomaalidu degto waxay hoos galeen maamulo gumeysi oo kala duwan, halka deegaanno kale ay ku jireen xuduudaha Itoobiya iyo Kenya. Waa in la kala saaraa Soomaaliya maanta iyo dhulalkii maamul-gumeysi.",
+      "period": "Colonial period",
+      "start_date": "1880",
+      "end_date": "1960",
+      "date_precision": "approximate_range",
+      "region": "Horn of Africa",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_loc",
+        "src_state_bg"
+      ],
+      "notes": "Bilowga gumeysigu wuxuu ku kala duwanaa deegaan iyo maamul."
+    },
+    {
+      "id": "som-010",
+      "type": "historical_topic",
+      "title_so": "Dhaqdhaqaaqii Daraawiishta",
+      "title_en": "Dervish movement",
+      "slug": "dhaqdhaqaaqii-daraawiishta",
+      "summary_so": "Daraawiishtu waxay la xiriirtay Sayid Maxamed Cabdulle Xasan iyo iska-caabbintii quwadihii gumeysiga bilowgii qarnigii 20aad.",
+      "body_so": "Daraawiishtu waxay la xiriirtay Sayid Maxamed Cabdulle Xasan iyo iska-caabbintii quwadihii gumeysiga bilowgii qarnigii 20aad. Fasiraadaha dhaqdhaqaaqa iyo saamayntiisa waa in lagu soo bandhigaa ilo kala duwan.",
+      "period": "Colonial period",
+      "start_date": "1899",
+      "end_date": "1920",
+      "date_precision": "year_range",
+      "region": "Somali regions",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "Hubi dhacdooyinka iyo aragtiyada kala duwan."
+    },
+    {
+      "id": "som-011",
+      "type": "historical_figure",
+      "title_so": "Sayid Maxamed Cabdulle Xasan",
+      "title_en": "Sayyid Mohamed Abdullah Hassan",
+      "slug": "sayid-maxamed-cabdulle-xasan",
+      "summary_so": "Wuxuu ka mid yahay shakhsiyaadka sida weyn looga xuso taariikhda iska-caabbinta gumeysiga ee Soomaalida.",
+      "body_so": "Wuxuu ka mid yahay shakhsiyaadka sida weyn looga xuso taariikhda iska-caabbinta gumeysiga ee Soomaalida. Taariikh nololeed dhammaystiran waa in lagu dhisaa ilo kala duwan, oo ay ku jiraan qoraallo iyo suugaan xilligaas la xiriirta.",
+      "period": "Colonial period",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "unknown",
+      "region": "Somali regions",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "Ha gelin taariikhaha dhalasho/geeri ilaa il lagu kalsoon yahay lagu xiro."
+    },
+    {
+      "id": "som-012",
+      "type": "historical_event",
+      "title_so": "Gobannimadii British Somaliland",
+      "title_en": "Independence of British Somaliland",
+      "slug": "gobannimadii-british-somaliland",
+      "summary_so": "Dhulkii British Somaliland wuxuu madax-bannaani qaatay 26 Juun 1960, ka hor midowgii 1 Luulyo 1960.",
+      "body_so": "Dhulkii British Somaliland wuxuu madax-bannaani qaatay 26 Juun 1960, ka hor midowgii 1 Luulyo 1960. Labada taariikhood waa in si cad loo kala saaraa.",
+      "period": "Independence",
+      "start_date": "1960-06-26",
+      "end_date": "1960-06-26",
+      "date_precision": "exact_day",
+      "region": "Former British Somaliland",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_state",
+        "src_state_bg"
+      ],
+      "notes": "Hubi dukumentiyada xilligaas iyo eray-bixinta siyaasadeed."
+    },
+    {
+      "id": "som-013",
+      "type": "historical_event",
+      "title_so": "Aasaaskii Jamhuuriyadda Soomaaliyeed",
+      "title_en": "Establishment of the Somali Republic",
+      "slug": "aasaaskii-jamhuuriyadda-soomaaliyeed",
+      "summary_so": "1 Luulyo 1960 waxaa la dhisay Jamhuuriyadda Soomaaliyeed markii dhulkii hore ee British Somaliland uu ku midoobay dhulkii hore ee UN Trust Territory of Somalia.",
+      "body_so": "1 Luulyo 1960 waxaa la dhisay Jamhuuriyadda Soomaaliyeed markii dhulkii hore ee British Somaliland uu ku midoobay dhulkii hore ee UN Trust Territory of Somalia.",
+      "period": "Independence and early republic",
+      "start_date": "1960-07-01",
+      "end_date": "1960-07-01",
+      "date_precision": "exact_day",
+      "region": "Somali Republic",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_state",
+        "src_frus",
+        "src_loc"
+      ],
+      "notes": "Xogta aasaasiga ah waxaa taageera diiwaanno diblomaasiyadeed."
+    },
+    {
+      "id": "som-014",
+      "type": "historical_figure",
+      "title_so": "Aadan Cabdulle Cismaan Daar",
+      "title_en": "Aden Abdulle Osman Daar",
+      "slug": "aadan-cabdulle-cismaan-daar",
+      "summary_so": "Aadan Cabdulle Cismaan Daar wuxuu noqday madaxweynihii ugu horreeyay ee Jamhuuriyadda Soomaaliyeed.",
+      "body_so": "Aadan Cabdulle Cismaan Daar wuxuu noqday madaxweynihii ugu horreeyay ee Jamhuuriyadda Soomaaliyeed. Taariikh nololeed buuxa wuxuu u baahan yahay ilo rasmi ah iyo daraasado taariikheed.",
+      "period": "Early republic",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "unknown",
+      "region": "Somali Republic",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_state",
+        "src_loc"
+      ],
+      "notes": "Xaqiiji taariikhaha nololeed iyo xilalka."
+    },
+    {
+      "id": "som-015",
+      "type": "historical_event",
+      "title_so": "Dastuurkii ugu horreeyay ee Jamhuuriyadda Soomaaliyeed",
+      "title_en": "First constitution of the Somali Republic",
+      "slug": "dastuurkii-ugu-horreeyay-ee-jamhuuriyadda-soomaaliyeed",
+      "summary_so": "Diiwaannada taariikhda siyaasadeed waxay sheegayaan in dastuurkii ugu horreeyay lagu ansixiyey afti qaran bishii Juun 1961.",
+      "body_so": "Diiwaannada taariikhda siyaasadeed waxay sheegayaan in dastuurkii ugu horreeyay lagu ansixiyey afti qaran bishii Juun 1961. Nuqulka dastuurka iyo natiijada aftida waa in la raadiyaa.",
+      "period": "Early republic",
+      "start_date": "1961-06",
+      "end_date": "1961-06",
+      "date_precision": "month",
+      "region": "Somali Republic",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_state_bg",
+        "src_loc"
+      ],
+      "notes": "Raadi nuqulka asalka ah iyo diiwaanka aftida."
+    },
+    {
+      "id": "som-016",
+      "type": "historical_event",
+      "title_so": "Afgambigii milateriga ee 1969",
+      "title_en": "The 1969 military coup",
+      "slug": "afgambigii-milateriga-ee-1969",
+      "summary_so": "21 Oktoobar 1969, milaterigu wuxuu la wareegay awoodda dowladdii rayidka ahayd, waxaana hoggaanka qabtay Maxamed Siyaad Barre.",
+      "body_so": "21 Oktoobar 1969, milaterigu wuxuu la wareegay awoodda dowladdii rayidka ahayd, waxaana hoggaanka qabtay Maxamed Siyaad Barre. Sababaha afgambiga waa in loo soo bandhigaa dhacdooyin iyo fasiraado kala duwan.",
+      "period": "Military government",
+      "start_date": "1969-10-21",
+      "end_date": "1969-10-21",
+      "date_precision": "exact_day",
+      "region": "Somalia",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_state_bg",
+        "src_loc"
+      ],
+      "notes": "Ha u soo bandhigin hal sabab oo keliya inay tahay sababta la isku raacsan yahay."
+    },
+    {
+      "id": "som-017",
+      "type": "historical_event",
+      "title_so": "Qorista rasmiga ah ee Af-Soomaaliga ee farta Laatiinka",
+      "title_en": "Adoption of Latin-based Somali orthography",
+      "slug": "qorista-rasmiga-ah-ee-af-soomaaliga-ee-farta-laatiinka",
+      "summary_so": "1972 waxaa la hirgeliyey farta Laatiinka ee qorista Af-Soomaaliga.",
+      "body_so": "1972 waxaa la hirgeliyey farta Laatiinka ee qorista Af-Soomaaliga. Tani waxay muhiim u ahayd maamulka, waxbarashada iyo daabacaadda. Go'aanka rasmiga ah iyo faahfaahinta ololayaasha waa in lagu xiraa ilo gaar ah.",
+      "period": "Military government",
+      "start_date": "1972",
+      "end_date": "1972",
+      "date_precision": "year",
+      "region": "Somalia",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_loc"
+      ],
+      "notes": "Ku dar bog/tixraac sax ah ka hor daabacaadda."
+    },
+    {
+      "id": "som-018",
+      "type": "historical_event",
+      "title_so": "Dagaalkii Ogaadeenya ee 1977–1978",
+      "title_en": "Ogaden War, 1977–1978",
+      "slug": "dagaalkii-ogaadeenya-ee-1977-1978",
+      "summary_so": "Dagaalku wuxuu ka dhacay xaalad ay isugu jireen qaranimo, muran dhuleed, xulafaysiyo caalami ah iyo isbeddello gobolka ka jiray.",
+      "body_so": "Dagaalku wuxuu ka dhacay xaalad ay isugu jireen qaranimo, muran dhuleed, xulafaysiyo caalami ah iyo isbeddello gobolka ka jiray. Maqaalka buuxa waa inuu ku daraa aragtiyo kala duwan iyo saamaynta rayidka.",
+      "period": "Military government",
+      "start_date": "1977",
+      "end_date": "1978",
+      "date_precision": "year_range",
+      "region": "Ogaden / Horn of Africa",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "U baahan cilmi-baaris gaar ah oo dhinacyo badan ka eegaysa dagaalka."
+    },
+    {
+      "id": "som-019",
+      "type": "historical_event",
+      "title_so": "Burburkii dowladdii dhexe ee Soomaaliya 1991",
+      "title_en": "Collapse of Somalia's central government in 1991",
+      "slug": "burburkii-dowladdii-dhexe-ee-soomaaliya-1991",
+      "summary_so": "Burburkii dowladdii dhexe 1991 wuxuu beddelay siyaasadda, amniga iyo nolosha bulshada.",
+      "body_so": "Burburkii dowladdii dhexe 1991 wuxuu beddelay siyaasadda, amniga iyo nolosha bulshada. Saamayntu gobolba gobol ayay ku kala duwanaatay; maqaalka waa in lagu dhisaa ilo kala duwan iyo xusuus bulsho oo anshax leh.",
+      "period": "Civil conflict and reconstruction",
+      "start_date": "1991",
+      "end_date": "1991",
+      "date_precision": "year",
+      "region": "Somalia",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_state",
+        "src_loc"
+      ],
+      "notes": "Mawduuc xasaasi ah: adeegso ilo badan, hana soo bandhigin sheegasho aan la xaqiijin."
+    },
+    {
+      "id": "som-020",
+      "type": "historical_event",
+      "title_so": "Ansixintii Dastuurka Ku-meelgaarka ah ee 2012",
+      "title_en": "Adoption of the 2012 Provisional Constitution",
+      "slug": "ansixintii-dastuurka-ku-meelgaarka-ah-ee-2012",
+      "summary_so": "Diiwaanka Qaramada Midoobay wuxuu sheegayaa in Dastuurka Ku-meelgaarka ah la ansixiyey 1 Agoosto 2012.",
+      "body_so": "Diiwaanka Qaramada Midoobay wuxuu sheegayaa in Dastuurka Ku-meelgaarka ah la ansixiyey 1 Agoosto 2012. Waa in la kala saaraa nuqulkii 2012 iyo wax-ka-beddellada dambe.",
+      "period": "Federal transition",
+      "start_date": "2012-08-01",
+      "end_date": "2012-08-01",
+      "date_precision": "exact_day",
+      "region": "Somalia",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_un_const",
+        "src_parliament",
+        "src_refworld"
+      ],
+      "notes": "Hubi nuqulka iyo wax-ka-beddellada dastuurka ee dambe."
+    },
+    {
+      "id": "som-021",
+      "type": "historical_topic",
+      "title_so": "Suugaanta Soomaaliyeed iyo gabayga",
+      "title_en": "Somali literature and poetry",
+      "slug": "suugaanta-soomaaliyeed-iyo-gabayga",
+      "summary_so": "Gabayga, heesaha, maahmaahyada iyo sheekooyinka afka laga tiriyo waxay kaydin karaan xusuus bulsho iyo fasiraado dhacdooyin.",
+      "body_so": "Gabayga, heesaha, maahmaahyada iyo sheekooyinka afka laga tiriyo waxay kaydin karaan xusuus bulsho iyo fasiraado dhacdooyin. Waa in la diiwaangeliyo abwaanka, waqtiga, xaaladda iyo xuquuqda isticmaalka.",
+      "period": "Cultural history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Somali-speaking communities",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_lewis",
+        "src_loc"
+      ],
+      "notes": "U baahan ilo suugaaneed oo gaar ah; hubi xuquuqda qoraalka iyo duubista."
+    },
+    {
+      "id": "som-022",
+      "type": "historical_topic",
+      "title_so": "Xeerka dhaqanka iyo hababka xalinta khilaafaadka",
+      "title_en": "Customary law and conflict resolution",
+      "slug": "xeerka-dhaqanka-iyo-hababka-xalinta-khilaafaadka",
+      "summary_so": "Bulshooyin Soomaaliyeed qaarkood waxay isticmaaleen xeerar dhaqameed iyo habab heshiisiin.",
+      "body_so": "Bulshooyin Soomaaliyeed qaarkood waxay isticmaaleen xeerar dhaqameed iyo habab heshiisiin. Hababkaasi way ku kala duwan yihiin deegaan iyo waqti, sidaas darteed waa inaan hal qaab loo nisbayn dhammaan Soomaalida.",
+      "period": "Social and cultural history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Somali communities",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "U baahan daraasado deegaan-gaar ah."
+    },
+    {
+      "id": "som-023",
+      "type": "historical_topic",
+      "title_so": "Nolosha reer guuraaga iyo dhaqaalaha xoolaha",
+      "title_en": "Pastoral life and livestock economies",
+      "slug": "nolosha-reer-guuraaga-iyo-dhaqaalaha-xoolaha",
+      "summary_so": "Xoolo-dhaqatada iyo dhaqdhaqaaqa xooluhu waxay door ku leeyihiin taariikhda dhaqaale iyo bulsho ee qaybo badan oo dhulka Soomaaliyeed ah.",
+      "body_so": "Xoolo-dhaqatada iyo dhaqdhaqaaqa xooluhu waxay door ku leeyihiin taariikhda dhaqaale iyo bulsho ee qaybo badan oo dhulka Soomaaliyeed ah. Hab-nololeedku wuu isbeddelay iyadoo ay saameeyeen roobabka, suuqyada iyo siyaasadaha.",
+      "period": "Social and economic history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Somali regions",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "U baahan cilmi-baaris gaar ah oo dhaqaale iyo deegaan."
+    },
+    {
+      "id": "som-024",
+      "type": "editorial_guideline",
+      "title_so": "Taariikhda afka laga soo tebiyo",
+      "title_en": "Oral history in Somali communities",
+      "slug": "taariikhda-afka-laga-soo-tebiyo",
+      "summary_so": "Wareysiyada iyo xusuusta afka laga soo tebiyo waxay diiwaangelin karaan waayo-aragnimada dadka iyo dhacdooyinka maxalliga ah.",
+      "body_so": "Wareysiyada iyo xusuusta afka laga soo tebiyo waxay diiwaangelin karaan waayo-aragnimada dadka iyo dhacdooyinka maxalliga ah. Wareysi kasta waa inuu lahaadaa xogta wareystaha, taariikhda, goobta, oggolaanshaha iyo habka kaydinta.",
+      "period": "Oral history methodology",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "not_applicable",
+      "region": "Somali communities",
+      "verification_status": "editorial_guideline",
+      "source_ids": [
+        "src_lewis"
+      ],
+      "notes": "U baahan oggolaansho iyo xogta ilaha wareysiga; xusuusta u nisbee qofka soo tebiyey."
+    },
+    {
+      "id": "som-025",
+      "type": "historical_topic",
+      "title_so": "Dhaxalka dhismaha ee magaalooyinka Soomaaliyeed",
+      "title_en": "Architectural heritage in Somali towns",
+      "slug": "dhaxalka-dhismaha-ee-magaalooyinka-soomaaliyeed",
+      "summary_so": "Dhismayaasha taariikhiga ah, masaajidda, guryaha, qalcadaha iyo goobaha ganacsi waxay ka mid noqon karaan dhaxalka muuqda.",
+      "body_so": "Dhismayaasha taariikhiga ah, masaajidda, guryaha, qalcadaha iyo goobaha ganacsi waxay ka mid noqon karaan dhaxalka muuqda. Goob kasta waa in lagu diiwaangeliyo taariikhda, goobta, xaaladda ilaalinta iyo xuquuqda sawirka.",
+      "period": "Architectural and cultural history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Somali regions",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "Ha u nisbayn dhisme xilli ama boqortooyo aan caddayn loo hayn."
+    },
+    {
+      "id": "som-026",
+      "type": "historical_event",
+      "title_so": "Xiriirradii diblomaasiyadeed ee Soomaaliya 1960",
+      "title_en": "Somalia's diplomatic relations in 1960",
+      "slug": "xiriirradii-diblomaasiyadeed-ee-soomaaliya-1960",
+      "summary_so": "Diiwaannada Office of the Historian waxay sheegayaan in Maraykanku aqoonsaday Soomaaliya 1 Luulyo 1960, isla maalintaasna la aasaasay xiriir diblomaasiyadeed.",
+      "body_so": "Diiwaannada Office of the Historian waxay sheegayaan in Maraykanku aqoonsaday Soomaaliya 1 Luulyo 1960, isla maalintaasna la aasaasay xiriir diblomaasiyadeed. Waa aragti dukumenti dowladeed oo ay tahay in lagu daro ilo kale.",
+      "period": "Early republic",
+      "start_date": "1960-07-01",
+      "end_date": "1960-07-01",
+      "date_precision": "exact_day",
+      "region": "Somalia and international relations",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_state",
+        "src_frus"
+      ],
+      "notes": "Ku dar ilo Soomaaliyeed iyo ilo dhinacyo kale ka yimid."
+    },
+    {
+      "id": "som-027",
+      "type": "historical_topic",
+      "title_so": "Dastuurka Ku-meelgaarka ah iyo dowlad-dhiska federaalka",
+      "title_en": "The Provisional Constitution and federal state-building",
+      "slug": "dastuurka-ku-meelgaarka-ah-iyo-dowlad-dhiska-federaalka",
+      "summary_so": "Dastuurka Ku-meelgaarka ah ee 2012 wuxuu dejiyey mabaadi'da aasaasiga ah iyo qaab-dhismeedyo dowladeed.",
+      "body_so": "Dastuurka Ku-meelgaarka ah ee 2012 wuxuu dejiyey mabaadi'da aasaasiga ah iyo qaab-dhismeedyo dowladeed. Waa in la akhriyaa qoraalka dastuurka, dukumentiyada ansixinta iyo wax-ka-beddellada dambe.",
+      "period": "Federal transition",
+      "start_date": "2012",
+      "end_date": null,
+      "date_precision": "year",
+      "region": "Somalia",
+      "verification_status": "needs_editorial_review",
+      "source_ids": [
+        "src_un_const",
+        "src_parliament",
+        "src_refworld"
+      ],
+      "notes": "Dulmar taariikheed; ma aha talo sharci."
+    },
+    {
+      "id": "som-028",
+      "type": "historical_topic",
+      "title_so": "Soomaaliya iyo taariikhda Geeska Afrika",
+      "title_en": "Somalia and the history of the Horn of Africa",
+      "slug": "soomaaliya-iyo-taariikhda-geeska-afrika",
+      "summary_so": "Dhaqdhaqaaqa dadka, ganacsiga, diinta iyo siyaasadda ayaa isku xiray dhulka Soomaaliyeed iyo qaybaha kale ee Geeska Afrika.",
+      "body_so": "Dhaqdhaqaaqa dadka, ganacsiga, diinta iyo siyaasadda ayaa isku xiray dhulka Soomaaliyeed iyo qaybaha kale ee Geeska Afrika. Xuduudaha siyaasadeed ee maanta jira waa in aan si toos ah loogu dabaqin waayihii hore.",
+      "period": "Regional history",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "broad_period",
+      "region": "Horn of Africa",
+      "verification_status": "research_draft",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "U baahan daraasado goboleed iyo ilo ka kala yimid dalal kala duwan."
+    },
+    {
+      "id": "som-029",
+      "type": "editorial_guideline",
+      "title_so": "Kaydinta dukumentiyada iyo sawirrada taariikhda Soomaaliya",
+      "title_en": "Preserving Somali historical documents and photographs",
+      "slug": "kaydinta-dukumentiyada-iyo-sawirrada-taariikhda-soomaaliya",
+      "summary_so": "Agab kasta waa inuu lahaadaa xog ku saabsan cidda samaysay ama kaydisay, taariikhda haddii la yaqaan, meesha laga helay, xuquuqda isticmaalka iyo wax-ka-beddellada.",
+      "body_so": "Agab kasta waa inuu lahaadaa xog ku saabsan cidda samaysay ama kaydisay, taariikhda haddii la yaqaan, meesha laga helay, xuquuqda isticmaalka iyo wax-ka-beddellada. Xog aan la hubin waa in loo calaamadiyaa mid aan dhammaystirnayn.",
+      "period": "Digital heritage practice",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "not_applicable",
+      "region": "WorldHeritage archive",
+      "verification_status": "editorial_guideline",
+      "source_ids": [
+        "src_loc"
+      ],
+      "notes": "Hagitaan maamulka kaydka, ma aha dhacdo taariikheed."
+    },
+    {
+      "id": "som-030",
+      "type": "editorial_guideline",
+      "title_so": "Sida loo akhriyo taariikhda Soomaaliya iyadoo la adeegsanayo ilo kala duwan",
+      "title_en": "Reading Somali history through multiple sources",
+      "slug": "sida-loo-akhriyo-taariikhda-soomaaliya-iyadoo-la-adeegsanayo-ilo-kala-duwan",
+      "summary_so": "Dukumenti dowladeed, cilmi-baaris, xusuus qofeed iyo taariikh afka laga soo tebiyo waxay bixin karaan aragtiyo kala duwan.",
+      "body_so": "Dukumenti dowladeed, cilmi-baaris, xusuus qofeed iyo taariikh afka laga soo tebiyo waxay bixin karaan aragtiyo kala duwan. WorldHeritage waa inuu muujiyo ilaha, meelaha ay ku kala duwan yihiin iyo waxa aan weli la xaqiijin.",
+      "period": "Research methodology",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "not_applicable",
+      "region": "WorldHeritage editorial practice",
+      "verification_status": "editorial_guideline",
+      "source_ids": [
+        "src_loc",
+        "src_lewis"
+      ],
+      "notes": "Ku dar siyaasadda tixraaca marka la ansixiyo."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src_loc",
+      "title": "Somalia: A Country Study",
+      "author": "Library of Congress, Federal Research Division; ed. Helen Chapin Metz",
+      "year": "1993",
+      "url": "https://www.loc.gov/item/93016246/",
+      "type": "Research reference",
+      "notes": "Broad historical reference; verify specific claims and page numbers."
+    },
+    {
+      "id": "src_lewis",
+      "title": "A Modern History of the Somali",
+      "author": "I. M. Lewis",
+      "year": "edition to verify",
+      "url": "https://www.cambridge.org/core/books/modern-history-of-the-somali/",
+      "type": "Scholarly book",
+      "notes": "Verify exact edition and page references before publication."
+    },
+    {
+      "id": "src_ajuran",
+      "title": "Ajuran Sultanate",
+      "author": "Mohamed Haji Mukhtar, Wiley Online Library reference work",
+      "year": "2016",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/9781118455074.wbeoe146",
+      "type": "Scholarly reference",
+      "notes": "Check full entry and page/context for claims."
+    },
+    {
+      "id": "src_state",
+      "title": "Somalia — Office of the Historian",
+      "author": "U.S. Department of State",
+      "year": "Web reference",
+      "url": "https://history.state.gov/countries/somalia",
+      "type": "Government historical record",
+      "notes": "Includes recognition and diplomatic relations in 1960."
+    },
+    {
+      "id": "src_state_bg",
+      "title": "Background Notes: Somalia (archived)",
+      "author": "U.S. Department of State",
+      "year": "Archived",
+      "url": "https://2009-2017.state.gov/outofdate/bgn/somalia/47557.htm",
+      "type": "Government historical overview",
+      "notes": "Cross-check with Somali and scholarly sources."
+    },
+    {
+      "id": "src_frus",
+      "title": "Foreign Relations of the United States, 1958–1960, Africa, Volume XIV",
+      "author": "U.S. Department of State, Office of the Historian",
+      "year": "1958–1960",
+      "url": "https://history.state.gov/historicaldocuments/frus1958-60v14/d62",
+      "type": "Primary diplomatic documents",
+      "notes": "U.S. documentary perspective; pair with other sources."
+    },
+    {
+      "id": "src_un_const",
+      "title": "Somali National Constituent Assembly — Certification Document",
+      "author": "United Nations Peacemaker",
+      "year": "2012",
+      "url": "https://peacemaker.un.org/en/documents/somali-national-constituent-assembly-certification-document-provisional-constitution",
+      "type": "Primary constitutional record",
+      "notes": "Records adoption certification dated 1 August 2012."
+    },
+    {
+      "id": "src_parliament",
+      "title": "Provisional Constitution 2012",
+      "author": "Federal Parliament of Somalia, House of the People",
+      "year": "2012",
+      "url": "https://parliament.gov.so/so/document/provisional-constitution-2012/",
+      "type": "Official constitutional document",
+      "notes": "Check amendments and current legal status."
+    },
+    {
+      "id": "src_refworld",
+      "title": "Federal Republic of Somalia: Provisional Constitution (excluding 2024 amendments)",
+      "author": "Refworld",
+      "year": "2012; excludes 2024 amendments",
+      "url": "https://www.refworld.org/legal/legislation/natlegbod/2012/en/97615",
+      "type": "Legal document repository",
+      "notes": "Not a consolidated current version."
+    }
+  ]
+}

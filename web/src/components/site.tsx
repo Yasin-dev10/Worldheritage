@@ -6,6 +6,10 @@ const nav = [
   { href: '/events', so: 'Dhacdooyin', en: 'Events' },
   { href: '/figures', so: 'Shakhsiyaad', en: 'People' },
   { href: '/history', so: 'Maqaallo', en: 'Stories' },
+  { href: '/research', so: 'Cilmi-baaris', en: 'Research drafts' },
+  { href: '/museum/items', so: 'Matxaf', en: 'Museum' },
+  { href: '/maps', so: 'Khariidado', en: 'Maps' },
+  { href: '/periods', so: 'Xilliyo', en: 'Periods' },
 ];
 
 export function SiteHeader({ locale = 'so' }: { locale?: Locale }) {

@@ -1,12 +1,12 @@
 # REST API Contract (Initial)
 
-**Status:** public read APIs are implemented for countries, events, people, civilizations, articles, timelines, and global search. Phase 5 adds OIDC-protected dashboard reads and initial source/media metadata operations. Full content editing, reviews, and publishing remain in progress. The database currently contains no seeded historical content; public collection routes therefore return empty lists until cited content is added.
+**Status:** public read APIs are implemented for countries, events, people, civilizations, articles, timelines, global search, and the explicitly labeled Somali research-draft collection. Protected APIs provide admin CRUD, editorial workflow transitions, source/media metadata, revisions, review queue reads, and audit-log reads.
 
 ## 1. Conventions
 
 - Base path: `/api/v1`; HTTPS outside local development; JSON UTF-8.
 - UUIDs identify records. Slugs are navigation aliases and may change.
-- Public `GET` endpoints return published/approved revisions only. Drafts, submissions, reviews, and admin data require authentication and explicit server-side authorization.
+- Standard public `GET` endpoints return published/approved revisions only. The separate `/research-drafts` collection intentionally exposes only records imported by the Somali history batch importer; every response is labeled `RESEARCH_DRAFT` and `Not completed; each claim requires source review.` Other drafts, submissions, reviews, and admin data require authentication and server-side authorization.
 - Use `Accept-Language` or an explicit `?locale=so|en`; return the selected locale and translation/review state. Do not silently disguise fallback content.
 - Collection responses use cursor pagination (`limit`, `cursor`) with a documented maximum page size. Apply stable sorting; do not expose arbitrary SQL sorting.
 - Writes use validated DTOs, bounded lengths, allowlisted fields, and optimistic concurrency (`If-Match`/revision identifier) where edits could overwrite work.
@@ -24,6 +24,8 @@
 | `GET /periods` / `GET /periods/{id}`             | Browse periods and relations                                          | Public                      |
 | `GET /events` / `GET /events/{id}`               | Browse/search published events, dates, sources, relations             | Public                      |
 | `GET /people` / `GET /people/{id}`               | Browse published people                                               | Public                      |
+| `GET /research-drafts?q=...&limit=...&offset=...` | Browse Somali batch records that remain drafts, with an explicit unverified label | Public research collection |
+| `GET /research-drafts/{slug}`                     | Read a Somali research draft and its source notes                       | Public research collection |
 | `GET /places` / `GET /places/{id}`               | Browse published places                                               | Public                      |
 | `GET /civilizations` / `GET /civilizations/{id}` | Browse published civilizations                                        | Public                      |
 | `GET /sources/{id}`                              | Read public bibliographic source metadata and rights information      | Public, if source is public |
@@ -45,6 +47,10 @@
 
 - `GET /admin/dashboard` requires a verified OIDC access token with `Admin`, `Editor`, or `Reviewer` in its `roles` claim. It returns database counts, published/draft/review counts across current content models, and recent audit events.
 - `GET /admin/sources?q=&limit=&offset=` and `GET /admin/media?limit=&offset=` require `Admin`, `Editor`, or `Reviewer`. Their corresponding `POST` create routes require `Admin` or `Editor`. Source creation accepts `sourceKind`, `title`, optional bibliographic metadata, rights metadata, and an HTTP/HTTPS URL when provided. Media creation stores metadata and a storage location; binary upload/storage is not implemented. Create plus audit event share one transaction.
+- Admin CRUD routes are available under `/admin/countries`, `/admin/articles`, `/admin/events`, `/admin/figures`, `/admin/timelines`, and `/admin/civilizations`. Create/update actions require `Admin` or `Editor`; archive actions require `Admin`.
+- `POST /admin/{events|figures|timelines|civilizations}/{id}/workflow` accepts `action` values `submit`, `review`, `approve`, `return`, `reject`, or `publish`. Reviewer decisions require `Admin` or `Reviewer`; submit/publish require `Admin` or `Editor`. `return` and `reject` require a rationale. Invalid state transitions are rejected.
+- `POST /admin/countries/{id}/workflow` applies the same transitions to the latest country revision. Editing Somali country text creates a new draft revision and copies the current translations and source links, leaving the published revision available to public readers until the new revision is published.
+- `GET /admin/reviews`, `/admin/revisions`, and `/admin/audit-logs` provide paginated editorial queue, revision, and audit data to authenticated admin roles.
 - User/role assignment endpoints are not implemented. Role assignment remains owned by the configured identity provider; do not treat frontend visibility as authorization.
 
 ### Implemented public read behavior
@@ -60,7 +66,7 @@ The following routes are also implemented under `/api/v1`: `GET /events` and `/e
 
 The protected routes use OIDC discovery and JWKS from `AUTH_ISSUER_URL`. The API validates exact issuer, signature, expiry, and `AUTH_AUDIENCE` (or `AUTH_CLIENT_ID` when no audience is set). Role claims must be a string array in `roles`. Missing or placeholder OIDC configuration fails closed. Browser login uses the authorization-code flow with PKCE; configure `{web-origin}/admin/login` as a redirect URI and set matching `WEB_ORIGIN`/`NEXT_PUBLIC_AUTH_*` values.
 
-Historical public responses are limited to published localized records with at least one source citation. No historical records or citations are generated as demo data. The public web presents empty states when the database has no matching content.
+Regular historical public responses are limited to published localized records with at least one source citation. Somali batch records are shown only in the dedicated research collection, with their source notes and a clear warning that claims have not been verified. They stay in the editorial `DRAFT` state and do not enter the ordinary published-article API or global search.
 
 ## 3. Role and scope summary
 

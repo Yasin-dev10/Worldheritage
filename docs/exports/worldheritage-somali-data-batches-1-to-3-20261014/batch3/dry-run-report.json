@@ -1,0 +1,175 @@
+{
+  "dataset": "WorldHeritage Somali Historical Knowledge Base — Starter Batch 3",
+  "version": "1.0",
+  "mode": "dry-run",
+  "status": "completed",
+  "createdAt": "2026-10-13T23:58:34.192Z",
+  "policy": "Imported content remains DRAFT; no publish operation is performed.",
+  "historicalVerification": "Not completed. Source URLs are research leads; no claim has been checked against its cited source.",
+  "schemaMapping": {
+    "historical_topic": "HistoryArticle + ArticleTranslation (so) + ArticleSource",
+    "historical_event": "HistoricalEvent + EventTranslation (so) + EventSource",
+    "historical_figure": "HistoricalPerson + PersonTranslation (so) + PersonSource",
+    "editorial_guideline": "Skipped; editorial guidance is not a historical content record.",
+    "preservedInRevisionSnapshot": [
+      "dataset record ID/type",
+      "English title",
+      "period",
+      "region",
+      "original date strings and precision",
+      "editorial notes",
+      "source catalogue entries"
+    ],
+    "notFirstClassFields": [
+      "article date/period/region",
+      "person region",
+      "claim-level verification checklist and reviewer identity"
+    ]
+  },
+  "databaseTarget": "127.0.0.1:5434/worldheritage",
+  "counts": {
+    "inputRecords": 12,
+    "importable": 12,
+    "imported": 0,
+    "skipped": 0,
+    "errors": 0,
+    "sourcesCreated": 0,
+    "sourcesReused": 0
+  },
+  "records": [
+    {
+      "datasetId": "som-b3-001",
+      "type": "historical_topic",
+      "slug": "qaraabonimada-aqoonsiyada-abtirsiinta-bulshada-soomaalida",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b3-002",
+      "type": "historical_topic",
+      "slug": "ereyga-qabiil-hababka-loo-kala-saaro-bulshooyinka-soomaalida",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b3-003",
+      "type": "historical_topic",
+      "slug": "bulshooyinka-bantu-jareer-taariikhaha-koonfurta-soomaaliya",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b3-004",
+      "type": "historical_topic",
+      "slug": "bulshada-bajuni-taariikhda-xeebaha-koonfureed",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b3-005",
+      "type": "historical_topic",
+      "slug": "bulshooyinka-xeebaha-banaadir-kala-duwanaanta-magacyada",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b3-006",
+      "type": "historical_topic",
+      "slug": "xeer-ciise-xeer-dhaqameed-afka-lagu-gudbiyo",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b3-007",
+      "type": "historical_topic",
+      "slug": "gabayga-haweenka-soomaaliyeed-gudbinta-suugaanta",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b3-008",
+      "type": "historical_topic",
+      "slug": "suugaanta-afka-idaacadaha-cajaladaha-codka",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b3-009",
+      "type": "historical_topic",
+      "slug": "gabay-hees-qoob-ka-ciyaar-dhaxal-nool",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b3-010",
+      "type": "historical_topic",
+      "slug": "farsamada-gacanta-dharka-dhaxalka-dhaqanka-soomaalida",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b3-011",
+      "type": "historical_topic",
+      "slug": "hidaha-afka-suugaanta-qoran-af-soomaaliga",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b3-012",
+      "type": "historical_topic",
+      "slug": "dhaqanka-soomaalida-istaraatiijiyad-kaydin-ka-qaybgal",
+      "status": "would_import",
+      "state": "DRAFT",
+      "sources": 1
+    }
+  ],
+  "sources": [
+    {
+      "id": "b3_kinship_2026",
+      "title": "Beyond war and politics: Somali kinship and everyday service delivery",
+      "status": "would_create"
+    },
+    {
+      "id": "b3_euaa_focus",
+      "title": "Somalia: Country Focus 2025 — Minorities",
+      "status": "would_create"
+    },
+    {
+      "id": "b3_euaa_guidance",
+      "title": "Country Guidance: Somalia, October 2025",
+      "status": "would_create"
+    },
+    {
+      "id": "b3_unesco_xeer",
+      "title": "Xeer Ciise, an oral customary law",
+      "status": "would_create"
+    },
+    {
+      "id": "b3_jama_poetry",
+      "title": "Silent Voices: The Role of Somali Women’s Poetry in Social and Political Life",
+      "status": "would_create"
+    },
+    {
+      "id": "b3_unesco_culture",
+      "title": "Somalia Develops a National Strategy for Culture",
+      "status": "would_create"
+    }
+  ],
+  "datasetChecks": [],
+  "database": {
+    "database": "worldheritage",
+    "schema": "public",
+    "sources_table": "sources"
+  }
+}

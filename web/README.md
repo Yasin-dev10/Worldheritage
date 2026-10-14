@@ -1,6 +1,6 @@
 # WorldHeritage web
 
-The Next.js App Router web application also serves the initial Phase 5 admin dashboard. Admin login and required identity-provider configuration are documented in [Phase 5 CMS status](../docs/PHASE5.md).
+The Next.js App Router application serves the public discovery site and Phase 5 admin experience. Admin includes content management, review actions, revision history, and audit log screens backed by the protected API. Login and identity-provider configuration are documented in [Phase 5 CMS status](../docs/PHASE5.md).
 
 Next.js App Router, strict TypeScript, and Tailwind CSS public platform. It reads published content from the NestJS API on the server; browser code never connects to PostgreSQL.
 

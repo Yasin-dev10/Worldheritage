@@ -9,6 +9,14 @@ import { TimelinesController } from './timelines.controller.js';
 import { SearchController } from './search.controller.js';
 import { PrismaService } from './prisma.service.js';
 import { AdminController } from './admin.controller.js';
+import {
+  HistoricalMapsController,
+  MuseumController,
+} from './museum.controller.js';
+import { MuseumAdminController } from './museum-admin.controller.js';
+import { PeriodsController } from './periods.controller.js';
+import { PeriodsAdminController } from './periods-admin.controller.js';
+import { ResearchDraftsController } from './research-drafts.controller.js';
 import { OidcAuthGuard } from './oidc-auth.guard.js';
 import { RolesGuard } from './roles.guard.js';
 
@@ -24,6 +32,12 @@ import { RolesGuard } from './roles.guard.js';
     TimelinesController,
     SearchController,
     AdminController,
+    MuseumController,
+    HistoricalMapsController,
+    MuseumAdminController,
+    PeriodsController,
+    PeriodsAdminController,
+    ResearchDraftsController,
   ],
   providers: [PrismaService, OidcAuthGuard, RolesGuard],
 })

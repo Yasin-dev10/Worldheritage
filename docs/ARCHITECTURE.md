@@ -11,7 +11,7 @@ Browser ── HTTPS ──> Next.js web ── HTTPS/JSON ──> NestJS API �
                                                   └─> object storage (later)
 ```
 
-The API owns authorization, validation, workflow, and persistence. The web application must not connect to PostgreSQL directly. Public readers filter to `PUBLISHED`. Initial Phase 5 OIDC-protected dashboard, source, and media-metadata operations are implemented; full content editing and publishing workflow remain in progress. Admin and contributor screens are not security boundaries: every protected operation must be authorized in the API.
+The API owns authorization, validation, workflow, and persistence. The web application must not connect to PostgreSQL directly. Public readers filter to `PUBLISHED`. Phase 5 includes OIDC-protected admin CRUD for countries, articles, events, figures, timelines, and civilizations; workflow transitions for articles, countries, and historical entities; source/media metadata; revision snapshots; and audit logs. Relationship/citation editing and finer-grained conflict-of-interest controls remain outstanding. Admin screens are not a security boundary: every protected operation must be authorized in the API.
 
 ## 2. Proposed repository structure
 
@@ -24,7 +24,7 @@ packages/config/           Shared lint and formatting config (only when useful)
 docs/                     Product and engineering decisions
 ```
 
-The Flutter starter in `app/` is preserved; product implementation there remains deferred. The Next.js and NestJS workspaces are implemented in `web/` and `backend/`. Prisma ORM 6.19.3 and its PostgreSQL driver adapter provide database access; migrations live in `backend/prisma/migrations/`. Public reads cover countries, events, people, civilizations, articles, timelines, and search. Admin login uses OIDC authorization code with PKCE and API JWT verification; see [Phase 5 status](PHASE5.md) for implemented scope and remaining workflow work.
+The Flutter starter in `app/` is preserved; product implementation there remains deferred. The Next.js and NestJS workspaces are implemented in `web/` and `backend/`. Prisma ORM 6.19.3 and its PostgreSQL driver adapter provide database access; migrations live in `backend/prisma/migrations/`. Public reads cover countries, events, people, civilizations, articles, timelines, and search. Admin login uses OIDC authorization code with PKCE and API JWT verification; see [Phase 5 status](PHASE5.md) for setup and remaining workflow work.
 
 ## 3. Backend module boundaries
 

@@ -77,7 +77,7 @@ export class ArticlesController {
       data: rows
         .slice(0, limit)
         .flatMap(({ translations, ...row }) =>
-          translations[0] ? [{ ...row, ...translations[0] }] : [],
+          translations[0] ? [{ ...row, ...translations[0], id: row.id }] : [],
         ),
       nextCursor: hasMore ? (rows[limit - 1]?.id ?? null) : null,
       locale,
@@ -118,10 +118,134 @@ export class ArticlesController {
             ...publicSourceRecordSelection(),
           },
         },
+        countries: {
+          where: {
+            country: {
+              revisions: {
+                some: {
+                  state: EditorialState.PUBLISHED,
+                  sources: { some: {} },
+                  translations: { some: { locale } },
+                },
+              },
+            },
+          },
+          select: {
+            country: {
+              select: {
+                slug: true,
+                isoAlpha2: true,
+                revisions: {
+                  where: {
+                    state: EditorialState.PUBLISHED,
+                    translations: { some: { locale } },
+                  },
+                  orderBy: { publishedAt: 'desc' },
+                  take: 1,
+                  select: {
+                    translations: {
+                      where: { locale },
+                      take: 1,
+                      select: { title: true },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        events: {
+          where: {
+            event: {
+              state: EditorialState.PUBLISHED,
+              sources: { some: {} },
+              translations: { some: { locale } },
+            },
+          },
+          select: {
+            event: {
+              select: {
+                slug: true,
+                startYear: true,
+                dateDisplay: true,
+                translations: {
+                  where: { locale },
+                  take: 1,
+                  select: { title: true },
+                },
+              },
+            },
+          },
+        },
+        people: {
+          where: {
+            person: {
+              state: EditorialState.PUBLISHED,
+              sources: { some: {} },
+              translations: { some: { locale } },
+            },
+          },
+          select: {
+            person: {
+              select: {
+                slug: true,
+                translations: {
+                  where: { locale },
+                  take: 1,
+                  select: { title: true },
+                },
+              },
+            },
+          },
+        },
+        civilizations: {
+          where: {
+            civilization: {
+              state: EditorialState.PUBLISHED,
+              sources: { some: {} },
+              translations: { some: { locale } },
+            },
+          },
+          select: {
+            civilization: {
+              select: {
+                slug: true,
+                translations: {
+                  where: { locale },
+                  take: 1,
+                  select: { title: true },
+                },
+              },
+            },
+          },
+        },
       },
     });
     if (!article || !article.translations[0]) throw new NotFoundException();
-    const { translations, ...base } = article;
-    return { ...base, ...translations[0] };
+    const { translations, countries, events, people, civilizations, ...base } =
+      article;
+    return {
+      ...base,
+      ...translations[0],
+      id: base.id,
+      countries: countries.map(({ country }) => ({
+        slug: country.slug,
+        title: country.revisions[0]?.translations[0]?.title ?? country.slug,
+      })),
+      events: events.map(({ event }) => ({
+        slug: event.slug,
+        startYear: event.startYear,
+        dateDisplay: event.dateDisplay,
+        title: event.translations[0]?.title ?? event.slug,
+      })),
+      people: people.map(({ person }) => ({
+        slug: person.slug,
+        title: person.translations[0]?.title ?? person.slug,
+      })),
+      civilizations: civilizations.map(({ civilization }) => ({
+        slug: civilization.slug,
+        title: civilization.translations[0]?.title ?? civilization.slug,
+      })),
+    };
   }
 }

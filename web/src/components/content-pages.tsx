@@ -35,6 +35,10 @@ const descriptions: Record<CollectionKey, Record<Locale, string>> = {
     so: 'Akhri qoraallo tifaftiran oo leh qoraa, tixraacyo iyo xog daabacaad.',
     en: 'Read reviewed stories with authorship, references, and publication details.',
   },
+  periods: {
+    so: 'Baadh xilliyada taariikhiga ah, taariikhahooda la qiyaasay iyo ilaha lagu saleeyay.',
+    en: 'Explore historical periods, approximate dates, and the sources that support them.',
+  },
 };
 
 function ArticleBody({ body, locale }: { body: string; locale: Locale }) {
@@ -375,6 +379,57 @@ export async function EntryPage({
               </p>
             )}
           </article>
+          {country.events?.length ? (
+            <section className="detail-related">
+              <h2>{locale === 'so' ? 'Dhacdooyinka la xiriira' : 'Related events'}</h2>
+              <ul>
+                {country.events.map((event, index) => (
+                  <li key={`${String(event.slug)}-${index}`}>
+                    <Link
+                      href={`/events/${encodeURIComponent(String(event.slug))}?locale=${locale}`}
+                    >
+                      {String(event.title)}
+                    </Link>
+                    {typeof event.dateDisplay === 'string' && event.dateDisplay
+                      ? ` · ${event.dateDisplay}`
+                      : ''}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+          {country.people?.length ? (
+            <section className="detail-related">
+              <h2>{locale === 'so' ? 'Dadka la xiriira' : 'Related people'}</h2>
+              <ul>
+                {country.people.map((person, index) => (
+                  <li key={`${String(person.slug)}-${index}`}>
+                    <Link
+                      href={`/figures/${encodeURIComponent(String(person.slug))}?locale=${locale}`}
+                    >
+                      {String(person.title)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+          {country.civilizations?.length ? (
+            <section className="detail-related">
+              <h2>{locale === 'so' ? 'Ilbaxnimooyinka la xiriira' : 'Related civilizations'}</h2>
+              <ul>
+                {country.civilizations.map((civilization, index) => (
+                  <li key={`${String(civilization.slug)}-${index}`}>
+                    <Link
+                      href={`/civilizations/${encodeURIComponent(String(civilization.slug))}?locale=${locale}`}
+                    >
+                      {String(civilization.title)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
           <section className="sources">
             <h2>{locale === 'so' ? 'Ilaha iyo sheegashooyinka' : 'Sources & claims'}</h2>
             {country.sources.length ? (
@@ -567,6 +622,16 @@ export async function EntryPage({
             locale === 'so' ? 'Dadka la xiriira' : 'Related people',
             content.people,
             'figures',
+          )}
+          {related(
+            locale === 'so' ? 'Ilbaxnimooyinka la xiriira' : 'Related civilizations',
+            content.civilizations,
+            'civilizations',
+          )}
+          {related(
+            locale === 'so' ? 'Xilliyada taariikhiga ah' : 'Historical periods',
+            content.periods,
+            'periods',
           )}
           {content.sources?.length ? (
             <section className="sources">

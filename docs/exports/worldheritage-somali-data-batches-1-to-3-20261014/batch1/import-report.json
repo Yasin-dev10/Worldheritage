@@ -1,0 +1,380 @@
+{
+  "dataset": "WorldHeritage Somali Historical Knowledge Base — Starter Batch 1",
+  "version": "0.1.0",
+  "mode": "apply",
+  "status": "completed",
+  "createdAt": "2026-10-13T23:39:10.384Z",
+  "policy": "Imported content remains DRAFT; no publish operation is performed.",
+  "databaseTarget": "127.0.0.1:5434/worldheritage",
+  "counts": {
+    "inputRecords": 30,
+    "importable": 27,
+    "imported": 27,
+    "skipped": 3,
+    "errors": 0,
+    "sourcesCreated": 9,
+    "sourcesReused": 0
+  },
+  "records": [
+    {
+      "datasetId": "som-001",
+      "type": "historical_topic",
+      "slug": "raadadka-qadiimiga-ah-iyo-degsiimooyinkii-hore",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "f7327759-fa93-45e7-bbc9-42951432ac07",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-002",
+      "type": "historical_topic",
+      "slug": "ganacsiga-xeebaha-soomaaliyeed-iyo-badweynta-hindiya",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "d922356b-4bc1-4aee-914f-5229ecdfc76f",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-003",
+      "type": "historical_topic",
+      "slug": "faafitaanka-islaamka-ee-dhulka-soomaaliyeed",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "5792fbd6-f21e-45e5-b850-afa83a159de4",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-004",
+      "type": "historical_topic",
+      "slug": "muqdisho-iyo-taariikhdeeda-ganacsi",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "f89badb2-4032-4d50-bbb7-7d48bc52ef9a",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-005",
+      "type": "historical_topic",
+      "slug": "saldanaddii-ajuuraan",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "f8e1aa2e-61a8-4a1c-9db7-33ee85bccf65",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-006",
+      "type": "historical_topic",
+      "slug": "saldanaddii-cadal-adal",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "aa5935c2-2406-48e9-8a0f-1dcf19e2fa08",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-007",
+      "type": "historical_topic",
+      "slug": "saldanaddii-geledi",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "79b63b41-4220-4044-b613-63e74038ce16",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-008",
+      "type": "historical_topic",
+      "slug": "saldanadihii-majeerteen-iyo-hobyo",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "f13eca35-5f1d-4e71-b7f4-6a1da0a20864",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-009",
+      "type": "historical_topic",
+      "slug": "kala-qaybsigii-gumeysiga-ee-dhulka-soomaaliyeed",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "a5769920-b388-450a-9feb-6aada56cd8ab",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-010",
+      "type": "historical_topic",
+      "slug": "dhaqdhaqaaqii-daraawiishta",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "a4688a6c-f38e-4583-b875-9abf8428f550",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-011",
+      "type": "historical_figure",
+      "slug": "sayid-maxamed-cabdulle-xasan",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "8be7325f-64a7-4ac7-9128-06deb19bb347",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-012",
+      "type": "historical_event",
+      "slug": "gobannimadii-british-somaliland",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "d0886853-024f-4421-b375-481a7b80ec49",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-013",
+      "type": "historical_event",
+      "slug": "aasaaskii-jamhuuriyadda-soomaaliyeed",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "69d23582-3af8-48e0-9fac-f443ef7efb2e",
+      "sources": 3
+    },
+    {
+      "datasetId": "som-014",
+      "type": "historical_figure",
+      "slug": "aadan-cabdulle-cismaan-daar",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "ca9ea27e-e3c0-4f1d-a072-590a68dba8f9",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-015",
+      "type": "historical_event",
+      "slug": "dastuurkii-ugu-horreeyay-ee-jamhuuriyadda-soomaaliyeed",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "12eef9fb-e973-48b1-9a88-1e07647ab84c",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-016",
+      "type": "historical_event",
+      "slug": "afgambigii-milateriga-ee-1969",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "e4302ad2-7c5b-49e9-9914-59de568b5bb0",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-017",
+      "type": "historical_event",
+      "slug": "qorista-rasmiga-ah-ee-af-soomaaliga-ee-farta-laatiinka",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "e5470e20-7545-4daa-8965-8f015316a1fa",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-018",
+      "type": "historical_event",
+      "slug": "dagaalkii-ogaadeenya-ee-1977-1978",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "e8c1e648-b14d-45d9-946a-899f0551c83d",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-019",
+      "type": "historical_event",
+      "slug": "burburkii-dowladdii-dhexe-ee-soomaaliya-1991",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "b08d52c1-d1e0-4df4-8287-3da94c67017c",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-020",
+      "type": "historical_event",
+      "slug": "ansixintii-dastuurka-ku-meelgaarka-ah-ee-2012",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "b1e3b593-8400-4a32-979e-07a4abee0aed",
+      "sources": 3
+    },
+    {
+      "datasetId": "som-021",
+      "type": "historical_topic",
+      "slug": "suugaanta-soomaaliyeed-iyo-gabayga",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "8e7f1c45-ecaf-4188-a276-df192d366721",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-022",
+      "type": "historical_topic",
+      "slug": "xeerka-dhaqanka-iyo-hababka-xalinta-khilaafaadka",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "b3a0602a-2258-4dd4-b2c2-a9a483307f85",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-023",
+      "type": "historical_topic",
+      "slug": "nolosha-reer-guuraaga-iyo-dhaqaalaha-xoolaha",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "6b1bee53-0ff5-4a48-9c4d-3f4394876728",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-024",
+      "type": "editorial_guideline",
+      "slug": "taariikhda-afka-laga-soo-tebiyo",
+      "status": "skipped",
+      "reason": "Editorial guidance, not a historical content entity."
+    },
+    {
+      "datasetId": "som-025",
+      "type": "historical_topic",
+      "slug": "dhaxalka-dhismaha-ee-magaalooyinka-soomaaliyeed",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "45cac3cf-1935-4991-99a5-f9e7d0f3ff64",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-026",
+      "type": "historical_event",
+      "slug": "xiriirradii-diblomaasiyadeed-ee-soomaaliya-1960",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "6273051a-7bae-4923-bf84-0d25a23f0c2f",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-027",
+      "type": "historical_topic",
+      "slug": "dastuurka-ku-meelgaarka-ah-iyo-dowlad-dhiska-federaalka",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "bdcf3abd-b042-4390-858c-eab7bff91577",
+      "sources": 3
+    },
+    {
+      "datasetId": "som-028",
+      "type": "historical_topic",
+      "slug": "soomaaliya-iyo-taariikhda-geeska-afrika",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "37f983d6-6c5d-4f03-af74-8fbb096cd89f",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-029",
+      "type": "editorial_guideline",
+      "slug": "kaydinta-dukumentiyada-iyo-sawirrada-taariikhda-soomaaliya",
+      "status": "skipped",
+      "reason": "Editorial guidance, not a historical content entity."
+    },
+    {
+      "datasetId": "som-030",
+      "type": "editorial_guideline",
+      "slug": "sida-loo-akhriyo-taariikhda-soomaaliya-iyadoo-la-adeegsanayo-ilo-kala-duwan",
+      "status": "skipped",
+      "reason": "Editorial guidance, not a historical content entity."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src_loc",
+      "title": "Somalia: A Country Study",
+      "status": "created"
+    },
+    {
+      "id": "src_lewis",
+      "title": "A Modern History of the Somali",
+      "status": "created"
+    },
+    {
+      "id": "src_ajuran",
+      "title": "Ajuran Sultanate",
+      "status": "created"
+    },
+    {
+      "id": "src_state",
+      "title": "Somalia — Office of the Historian",
+      "status": "created"
+    },
+    {
+      "id": "src_state_bg",
+      "title": "Background Notes: Somalia (archived)",
+      "status": "created"
+    },
+    {
+      "id": "src_frus",
+      "title": "Foreign Relations of the United States, 1958–1960, Africa, Volume XIV",
+      "status": "created"
+    },
+    {
+      "id": "src_un_const",
+      "title": "Somali National Constituent Assembly — Certification Document",
+      "status": "created"
+    },
+    {
+      "id": "src_parliament",
+      "title": "Provisional Constitution 2012",
+      "status": "created"
+    },
+    {
+      "id": "src_refworld",
+      "title": "Federal Republic of Somalia: Provisional Constitution (excluding 2024 amendments)",
+      "status": "created"
+    }
+  ],
+  "datasetChecks": [],
+  "database": {
+    "database": "worldheritage",
+    "schema": "public",
+    "sources_table": "sources"
+  },
+  "historicalVerification": "Not completed. Source URLs are research leads; no claim has been checked against its cited source.",
+  "schemaMapping": {
+    "historical_topic": "HistoryArticle + ArticleTranslation (so) + ArticleSource",
+    "historical_event": "HistoricalEvent + EventTranslation (so) + EventSource",
+    "historical_figure": "HistoricalPerson + PersonTranslation (so) + PersonSource",
+    "editorial_guideline": "Skipped; editorial guidance is not a historical content record.",
+    "preservedInRevisionSnapshot": [
+      "dataset record ID/type",
+      "English title",
+      "period",
+      "region",
+      "original date strings and precision",
+      "editorial notes",
+      "source catalogue entries",
+      "source verification notes"
+    ],
+    "notFirstClassFields": [
+      "article date/period/region",
+      "person region",
+      "claim-level verification checklist and reviewer identity"
+    ]
+  },
+  "verification": {
+    "database": {
+      "importedContent": 27,
+      "draftsAndUnpublished": 27,
+      "revisionSnapshots": 27,
+      "sourceLinks": 55,
+      "uncertainSourceLinks": 55,
+      "sourceCatalogEntriesCreated": 9
+    },
+    "api": {
+      "publicEventsSearchForImportedIndependenceEvent": 0,
+      "unauthenticatedAdminArticlesHttpStatus": 401
+    },
+    "repeatApply": {
+      "imported": 0,
+      "skipped": 30,
+      "sourcesCreated": 0,
+      "sourcesReused": 9
+    },
+    "sourceNotesStored": "Preserved in each imported content revision snapshot; the existing Source model has no verification-notes field."
+  }
+}

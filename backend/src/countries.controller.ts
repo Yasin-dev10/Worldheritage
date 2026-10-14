@@ -48,6 +48,7 @@ export class CountriesController {
         revisions: {
           some: {
             state: EditorialState.PUBLISHED,
+            sources: { some: {} },
             translations: {
               some: {
                 locale,
@@ -71,6 +72,7 @@ export class CountriesController {
         revisions: {
           where: {
             state: EditorialState.PUBLISHED,
+            sources: { some: {} },
             translations: { some: { locale } },
           },
           orderBy: { publishedAt: 'desc' },
@@ -144,6 +146,7 @@ export class CountriesController {
         revisions: {
           some: {
             state: EditorialState.PUBLISHED,
+            sources: { some: {} },
             translations: { some: { locale } },
           },
         },
@@ -159,6 +162,7 @@ export class CountriesController {
         revisions: {
           where: {
             state: EditorialState.PUBLISHED,
+            sources: { some: {} },
             translations: { some: { locale } },
           },
           orderBy: { publishedAt: 'desc' },
@@ -219,6 +223,7 @@ export class CountriesController {
         revisions: {
           some: {
             state: EditorialState.PUBLISHED,
+            sources: { some: {} },
             translations: { some: { locale } },
           },
         },
@@ -231,6 +236,7 @@ export class CountriesController {
         revisions: {
           where: {
             state: EditorialState.PUBLISHED,
+            sources: { some: {} },
             translations: { some: { locale } },
           },
           orderBy: { publishedAt: 'desc' },
@@ -266,6 +272,73 @@ export class CountriesController {
             },
           },
         },
+        eventLinks: {
+          where: {
+            event: {
+              state: EditorialState.PUBLISHED,
+              sources: { some: {} },
+              translations: { some: { locale } },
+            },
+          },
+          select: {
+            relation: true,
+            event: {
+              select: {
+                slug: true,
+                dateDisplay: true,
+                startYear: true,
+                translations: {
+                  where: { locale },
+                  take: 1,
+                  select: { title: true },
+                },
+              },
+            },
+          },
+        },
+        personLinks: {
+          where: {
+            person: {
+              state: EditorialState.PUBLISHED,
+              sources: { some: {} },
+              translations: { some: { locale } },
+            },
+          },
+          select: {
+            relation: true,
+            person: {
+              select: {
+                slug: true,
+                translations: {
+                  where: { locale },
+                  take: 1,
+                  select: { title: true },
+                },
+              },
+            },
+          },
+        },
+        civilizationLinks: {
+          where: {
+            civilization: {
+              state: EditorialState.PUBLISHED,
+              sources: { some: {} },
+              translations: { some: { locale } },
+            },
+          },
+          select: {
+            civilization: {
+              select: {
+                slug: true,
+                translations: {
+                  where: { locale },
+                  take: 1,
+                  select: { title: true },
+                },
+              },
+            },
+          },
+        },
       },
     });
 
@@ -285,6 +358,24 @@ export class CountriesController {
       summary: translation.summary,
       body: translation.body,
       sources: revision.sources,
+      events: (country?.eventLinks ?? []).map(({ relation, event }) => ({
+        slug: event.slug,
+        title: event.translations[0]?.title ?? event.slug,
+        startYear: event.startYear,
+        dateDisplay: event.dateDisplay,
+        relation,
+      })),
+      people: (country?.personLinks ?? []).map(({ relation, person }) => ({
+        slug: person.slug,
+        title: person.translations[0]?.title ?? person.slug,
+        relation,
+      })),
+      civilizations: (country?.civilizationLinks ?? []).map(
+        ({ civilization }) => ({
+          slug: civilization.slug,
+          title: civilization.translations[0]?.title ?? civilization.slug,
+        }),
+      ),
     };
   }
 

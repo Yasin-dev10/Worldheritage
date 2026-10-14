@@ -1,0 +1,309 @@
+{
+  "dataset": "WorldHeritage Somali Historical Knowledge Base — Starter Batch 2",
+  "version": "0.1.0",
+  "mode": "apply",
+  "status": "completed",
+  "createdAt": "2026-10-13T23:45:43.338Z",
+  "policy": "Imported content remains DRAFT; no publish operation is performed.",
+  "historicalVerification": "Not completed. Source URLs are research leads; no claim has been checked against its cited source.",
+  "schemaMapping": {
+    "historical_topic": "HistoryArticle + ArticleTranslation (so) + ArticleSource",
+    "historical_event": "HistoricalEvent + EventTranslation (so) + EventSource",
+    "historical_figure": "HistoricalPerson + PersonTranslation (so) + PersonSource",
+    "editorial_guideline": "Skipped; editorial guidance is not a historical content record.",
+    "preservedInRevisionSnapshot": [
+      "dataset record ID/type",
+      "English title",
+      "period",
+      "region",
+      "original date strings and precision",
+      "editorial notes",
+      "source catalogue entries"
+    ],
+    "notFirstClassFields": [
+      "article date/period/region",
+      "person region",
+      "claim-level verification checklist and reviewer identity"
+    ]
+  },
+  "databaseTarget": "127.0.0.1:5434/worldheritage",
+  "counts": {
+    "inputRecords": 21,
+    "importable": 21,
+    "imported": 21,
+    "skipped": 0,
+    "errors": 0,
+    "sourcesCreated": 10,
+    "sourcesReused": 0
+  },
+  "records": [
+    {
+      "datasetId": "som-b2-001",
+      "type": "historical_event",
+      "slug": "dagaalkii-xuduudda-soomaaliya-itoobiya-1964",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "81389dcd-7eaf-41c3-9722-88c7196f95db",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-002",
+      "type": "historical_event",
+      "slug": "dilkii-madaxweyne-cabdirashiid-cali-sharmaarke-1969",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "c252ac93-237b-401d-98db-f4b36589ae3b",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-003",
+      "type": "historical_event",
+      "slug": "soomaaliya-ku-biirtay-oau-1963",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "9680c286-6ccc-4f78-a4c8-a31659b03deb",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-004",
+      "type": "historical_topic",
+      "slug": "guddigii-qorista-af-soomaaliga-1971",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "a018bf9f-337c-4984-bbe2-28e513ae8441",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-005",
+      "type": "historical_topic",
+      "slug": "ololihii-wax-akhriska-miyiga-af-soomaaliga",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "b043cdcb-402b-4962-82b9-4db1ad252847",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-006",
+      "type": "historical_event",
+      "slug": "abaartii-soomaaliya-1974-1975",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "4fd79d20-97ab-4797-9334-5c85619e004a",
+      "sources": 3
+    },
+    {
+      "datasetId": "som-b2-007",
+      "type": "historical_event",
+      "slug": "soomaaliya-ku-biirtay-jaamacadda-carabta-1974",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "c819fed6-d95d-4612-b3f0-d153d5c4b7d0",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-008",
+      "type": "historical_event",
+      "slug": "isku-daygii-afgambiga-abriil-1978",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "b5955685-5686-4ebb-b8f1-c01534d0ba71",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-009",
+      "type": "historical_event",
+      "slug": "bixitaankii-xukuumaddii-dhexe-muqdisho-1991",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "6f0b69af-a66c-4bd0-96d7-31c607b28802",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b2-010",
+      "type": "historical_event",
+      "slug": "aasaaskii-hawlgalka-unosom-i-1992",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "ff18c65a-f93d-4a77-8f4c-4ccfc4cd052a",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b2-011",
+      "type": "historical_event",
+      "slug": "unitaf-iyo-restore-hope-soomaaliya-1992",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "a23e9804-1713-4817-b1e8-06b484ea8208",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b2-012",
+      "type": "historical_event",
+      "slug": "u-beddeliddii-unosom-i-unosom-ii-1993",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "988bebd0-e726-4528-907f-283e14376a69",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b2-013",
+      "type": "historical_event",
+      "slug": "dagaalkii-muqdisho-3-oktoobar-1993",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "7e1ffb45-7289-4c8e-af80-0f9494e9b26a",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b2-014",
+      "type": "historical_event",
+      "slug": "dhammaadkii-unosom-ii-soomaaliya-1995",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "9b790d4c-1043-4b55-b63e-b498375424de",
+      "sources": 2
+    },
+    {
+      "datasetId": "som-b2-015",
+      "type": "historical_topic",
+      "slug": "ganacsigii-badda-xeebta-waqooyi-xilliyadii-hore",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "10e6e677-6c9e-407f-86ca-97d7c9b3c587",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-016",
+      "type": "historical_topic",
+      "slug": "raadadka-ganacsi-ras-xaafuun",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "2394a6c1-1f72-4d8a-a3b6-30f81e9036ff",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-017",
+      "type": "historical_topic",
+      "slug": "xiis-raadadka-is-weydaarsiga-xeebta-qadiimiga-ah",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "2c551f1e-94fa-4da9-b25f-3684a8389b31",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-018",
+      "type": "historical_topic",
+      "slug": "berbera-siyaara-xarumaha-ganacsiga-xeebta",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "9f947900-28a6-48df-81da-2a86c9457be1",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-019",
+      "type": "historical_topic",
+      "slug": "af-maxaa-tiri-iyo-luqadaha-aan-mudnaanta-helin",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "e6d34721-1b66-4c74-bd55-f7e46c34affe",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-020",
+      "type": "historical_topic",
+      "slug": "diiwaangelinta-suugaanta-afka-taariikhda-qoraalka",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "130f9586-b9c3-4e5e-8a21-fc0ce81b5e65",
+      "sources": 1
+    },
+    {
+      "datasetId": "som-b2-021",
+      "type": "historical_topic",
+      "slug": "dooddii-far-qoraalka-af-soomaaliga",
+      "status": "imported",
+      "state": "DRAFT",
+      "id": "2684ec07-b2b0-4587-a52c-372bfd2e5947",
+      "sources": 1
+    }
+  ],
+  "sources": [
+    {
+      "id": "b2_unhdr",
+      "title": "Somalia Human Development Report 2001: Human Rights and Governance",
+      "status": "created"
+    },
+    {
+      "id": "b2_frus64",
+      "title": "Foreign Relations of the United States, 1969–1976, Volume E-5, Part 1, Document 287",
+      "status": "created"
+    },
+    {
+      "id": "b2_ahr",
+      "title": "A Revolution of Letters: Text, Sight and Spectacle in Socialist Somalia",
+      "status": "created"
+    },
+    {
+      "id": "b2_aja",
+      "title": "Nomads Trading with Empires: Intercultural Trade in Ancient Somaliland in the First to Seventh Centuries CE",
+      "status": "created"
+    },
+    {
+      "id": "b2_us1993",
+      "title": "Somalia, 1992–1993",
+      "status": "created"
+    },
+    {
+      "id": "b2_unosom1",
+      "title": "Security Council Resolution 751 (1992)",
+      "status": "created"
+    },
+    {
+      "id": "b2_unosom2",
+      "title": "United Nations Operation in Somalia II: Resolutions and Background",
+      "status": "created"
+    },
+    {
+      "id": "b2_undro",
+      "title": "Report on the activities of the Office of the United Nations Disaster Relief Coordinator, 1974–1975",
+      "status": "created"
+    },
+    {
+      "id": "b2_un_drought",
+      "title": "Report of the Administrator of the United Nations Development Programme",
+      "status": "created"
+    },
+    {
+      "id": "b2_au_oau",
+      "title": "OAU Charter and Member States",
+      "status": "created"
+    }
+  ],
+  "datasetChecks": [],
+  "database": {
+    "database": "worldheritage",
+    "schema": "public",
+    "sources_table": "sources"
+  },
+  "verification": {
+    "database": {
+      "importedContent": 21,
+      "draftsAndUnpublished": 21,
+      "published": 0,
+      "revisionSnapshots": 21,
+      "sourceLinks": 29,
+      "uncertainSourceLinks": 29,
+      "sourceCatalogEntriesCreated": 10
+    },
+    "api": {
+      "publicEventsSearchForImportedMogadishuBattle": 0,
+      "unauthenticatedAdminArticlesHttpStatus": 401
+    },
+    "repeatApply": {
+      "imported": 0,
+      "skipped": 21,
+      "sourcesCreated": 0,
+      "sourcesReused": 10
+    }
+  }
+}

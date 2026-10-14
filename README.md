@@ -4,7 +4,7 @@ WorldHeritage is a founder-owned multilingual history and digital heritage platf
 
 ## Current status
 
-The public web platform includes the discovery routes and API reads for countries, events, people, civilizations, articles, timelines, and global search. The initial Phase 5 increment adds OIDC-protected admin dashboard access and source/media metadata endpoints; full content editing and editorial workflow remain in progress. See [Phase 5 CMS status](docs/PHASE5.md) for setup and remaining work. No historical records are seeded, so public directories are empty until reviewed content is published.
+The public web platform includes discovery routes and API reads for countries, events, people, civilizations, articles, timelines, and global search. Phase 5 includes an OIDC-protected admin dashboard, country/article editors, admin CRUD screens for events, figures, timelines and civilizations, source/media metadata forms, workflow actions, revision history, and audit logs. API writes enforce roles and record audit events. See [Phase 5 CMS status](docs/PHASE5.md) for supported workflows and identity-provider setup. No historical records are seeded, so public directories remain empty until reviewed content is published.
 
 ## Repository layout
 

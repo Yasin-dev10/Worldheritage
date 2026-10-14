@@ -153,6 +153,9 @@ export default async function Home({ searchParams }: PageProps<'/'>) {
                     : 'Preserving heritage, sharing knowledge.'}
                 </h2>
               </div>
+              <Link className="text-link" href={`/museum/items?locale=${locale}`}>
+                {locale === 'so' ? 'Gal matxafka dijitaalka ah' : 'Visit the digital museum'} ↗
+              </Link>
             </div>
             <p className="intro-copy">
               {locale === 'so'

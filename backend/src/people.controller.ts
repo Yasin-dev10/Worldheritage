@@ -77,7 +77,7 @@ export class PeopleController {
       data: rows
         .slice(0, limit)
         .flatMap(({ translations, ...row }) =>
-          translations[0] ? [{ ...row, ...translations[0] }] : [],
+          translations[0] ? [{ ...row, ...translations[0], id: row.id }] : [],
         ),
       nextCursor: hasMore ? (rows[limit - 1]?.id ?? null) : null,
       locale,
@@ -114,6 +114,7 @@ export class PeopleController {
           where: {
             event: {
               state: EditorialState.PUBLISHED,
+              sources: { some: {} },
               translations: { some: { locale } },
             },
           },
@@ -124,6 +125,65 @@ export class PeopleController {
                 slug: true,
                 startYear: true,
                 dateDisplay: true,
+                translations: {
+                  where: { locale },
+                  take: 1,
+                  select: { title: true },
+                },
+              },
+            },
+          },
+        },
+        countries: {
+          where: {
+            country: {
+              revisions: {
+                some: {
+                  state: EditorialState.PUBLISHED,
+                  sources: { some: {} },
+                  translations: { some: { locale } },
+                },
+              },
+            },
+          },
+          select: {
+            relation: true,
+            country: {
+              select: {
+                slug: true,
+                revisions: {
+                  where: {
+                    state: EditorialState.PUBLISHED,
+                    sources: { some: {} },
+                    translations: { some: { locale } },
+                  },
+                  orderBy: { publishedAt: 'desc' },
+                  take: 1,
+                  select: {
+                    translations: {
+                      where: { locale },
+                      take: 1,
+                      select: { title: true },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        civilizations: {
+          where: {
+            civilization: {
+              state: EditorialState.PUBLISHED,
+              sources: { some: {} },
+              translations: { some: { locale } },
+            },
+          },
+          select: {
+            relation: true,
+            civilization: {
+              select: {
+                slug: true,
                 translations: {
                   where: { locale },
                   take: 1,
@@ -144,14 +204,25 @@ export class PeopleController {
       },
     });
     if (!person || !person.translations[0]) throw new NotFoundException();
-    const { translations, events, ...base } = person;
+    const { translations, events, countries, civilizations, ...base } = person;
     return {
       ...base,
       ...translations[0],
+      id: base.id,
       events: events.map(({ relation, event }) => ({
         ...event,
         title: event.translations[0]?.title ?? null,
         translations: undefined,
+        relation,
+      })),
+      countries: countries.map(({ relation, country }) => ({
+        slug: country.slug,
+        title: country.revisions[0]?.translations[0]?.title ?? country.slug,
+        relation,
+      })),
+      civilizations: civilizations.map(({ relation, civilization }) => ({
+        slug: civilization.slug,
+        title: civilization.translations[0]?.title ?? civilization.slug,
         relation,
       })),
     };
